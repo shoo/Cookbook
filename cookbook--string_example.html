@@ -20,13 +20,36 @@
     </div>
     
     <ul>
-            <a href="array_example.html"><span >array_example</span></a>
-        <a href="getopt_example.html"><span >getopt_example</span></a>
-        <a href="string_example.html"><span >string_example</span></a>
-    
-            <li class="expand-container open"><a class='expand-toggle' href="#"><span >subpkg</span></a><ul><li>            <a href="subpkg_test.html"><span >test</span></a>
-        </li></ul></li>
-    </ul>
+
+	
+
+	<li><a href="cookbook--array_example.html"><span >array_example</span></a></li>
+
+
+
+	<li><a href="cookbook--getopt_example.html"><span >getopt_example</span></a></li>
+
+
+
+	<li><a href="cookbook--string_example.html"><span >string_example</span></a></li>
+
+
+
+
+
+	
+	<li class="expand-container open"><a class='expand-toggle' href="#"><span >subpkg</span></a><ul>
+		
+		
+
+	<li><a href="cookbook-subpkg--subpkg.test.html"><span >test</span></a></li>
+
+
+	</ul></li>
+
+
+
+</ul>
 </div>
             <div class="content">                <h1>string_example</h1>
                 
@@ -35,7 +58,7 @@
                 <div class="ddoc_summary">文字列操作についてまとめます。
 </div><div class="ddoc_section_nonstandard"><span class="ddoc_section_nonstandard_header">TODO:</span>
 置換(replace)</div>
-<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  文字列の連結
 <div class="ddoc_blankline"></div>
 
@@ -58,7 +81,7 @@ buffer.put(<span class="d_string">"/dlang"</span>);
 <span class="d_keyword">assert</span>(buffer.data == <span class="d_string">"https://github.com/dlang"</span>);
 </pre>
 </div>
-<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  書式化文字列
 <div class="ddoc_blankline"></div>
 
@@ -77,14 +100,14 @@ string url = <span class="d_string">"https://github.com"</span>;
 <span class="d_keyword">assert</span>(text == <span class="d_string">"10, 1.500000, https://github.com"</span>, text);
 </pre>
 </div>
-<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  完全一致、辞書順での比較
 <pre class="d_code notranslate"><span class="d_keyword">auto</span> text = <span class="d_string">"ABC"</span>;
 <span class="d_keyword">assert</span>(text == <span class="d_string">"ABC"</span>);
 <span class="d_keyword">assert</span>(text &lt; <span class="d_string">"abc"</span>);
 </pre>
 </div>
-<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  大文字小文字を無視して比較
 <div class="ddoc_blankline"></div>
 
@@ -107,7 +130,7 @@ string url = <span class="d_string">"https://github.com"</span>;
 <span class="d_keyword">assert</span>(icmp(text, <span class="d_string">"abcd"</span>) &lt; 0);
 </pre>
 </div>
-<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  「で始まる」「で終わる」の例
 <div class="ddoc_blankline"></div>
 
@@ -129,7 +152,7 @@ string url = <span class="d_string">"https://github.com"</span>;
 <span class="d_keyword">assert</span>(text.endsWith(<span class="d_string">".algorithm"</span>));
 </pre>
 </div>
-<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  文字列が出現する位置を検索します。
 <div class="ddoc_blankline"></div>
 

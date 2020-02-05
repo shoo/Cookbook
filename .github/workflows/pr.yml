@@ -270,20 +270,15 @@ jobs:
         with:
           name: coverage-windows
           path: .cov-windows
-      - name: Upload Windows coverage to Codecov
-        run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }} -f "./.cov-windows/*.lst" -F unittest
       - name: Download Linux coverage result
         uses: actions/download-artifact@v1
         with:
           name: coverage-linux
           path: .cov-linux
-      - name: Upload Linux coverage to Codecov
-        run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }} -f "./.cov-linux/*.lst" -F unittest
       - name: Download OSX coverage result
         uses: actions/download-artifact@v1
         with:
           name: coverage-osx
           path: .cov-osx
       - name: Upload OSX coverage to Codecov
-        run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }} -f "./.cov-osx/*.lst" -F unittest
-
+        run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}

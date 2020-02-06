@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
-<html>    <head>        <META http-equiv="content-type" content="text/html; charset=utf-8">
+<html>    <head>        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
         <link rel="stylesheet" type="text/css" href="css/proj_docs.css">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/sidebar.js"></script>
@@ -13,7 +14,7 @@
         <div class="container">            
 <div class="sidebar-underbar"></div>
 <div class="sidebar">    <div class="head">        <h2>cookbook</h2>
-        <p><span class="smallprint"><b>version:</b> ~enh_gendoc <span class="separator"><br></span>
+        <p><span class="smallprint"><b>version:</b> ~master <span class="separator"><br></span>
             </span>
         </p>
         <p><a href="index.html">overview</a></p>
@@ -23,41 +24,149 @@
 
 	
 
-	<li><a href="cookbook--array_example.html"><span >array_example</span></a></li>
+	<li><a href="cookbook--array_example.html"><span >配列</span></a></li>
 
 
 
-	<li><a href="cookbook--getopt_example.html"><span >getopt_example</span></a></li>
+	<li><a href="cookbook--assoc_array_example.html"><span >連想配列</span></a></li>
 
 
 
-	<li><a href="cookbook--string_example.html"><span >string_example</span></a></li>
+	<li><a href="cookbook--concurrency_example.html"><span >並行処理</span></a></li>
+
+
+	
+		<li class="expand-container open"><a class='expand-toggle' href="#"><span >データ形式
+		</span></a><ul><li><a href="
+			cookbook--data.html"><span >overview</span></a></li>
+			
+
+	<li><a href="cookbook--data.csv_example.html"><span >CSV操作</span></a></li>
+
+
+
+	<li><a href="cookbook--data.json_example.html"><span >JSON操作</span></a></li>
+
+</ul></li>
+	
+	
+
+
+
+
+
+	<li><a href="cookbook--datetime_example.html"><span >時刻・日付</span></a></li>
+
+
+
+	<li><a href="cookbook--file_example.html"><span >ファイルシステム</span></a></li>
+
+
+
+	<li><a href="cookbook--getopt_example.html"><span >コマンドライン解析</span></a></li>
+
+
+
+	<li><a href="cookbook--is_example.html"><span >is式</span></a></li>
+
+
+
+	<li><a href="cookbook--meta_example.html"><span >メタプログラミング</span></a></li>
+
+
+
+	<li><a href="cookbook--network_example.html"><span >ネットワーク(cURL)</span></a></li>
+
+
+
+	<li><a href="cookbook--process_example.html"><span >プロセス</span></a></li>
+
+
+
+	<li><a href="cookbook--random_example.html"><span >乱数</span></a></li>
+
+
+
+	<li><a href="cookbook--range_example.html"><span >レンジ</span></a></li>
+
+
+
+	<li><a href="cookbook--regex_example.html"><span >正規表現</span></a></li>
+
+
+
+	<li><a href="cookbook--string_example.html"><span >文字列</span></a></li>
+
+
+
+	<li><a href="cookbook--uda_example.html"><span >UDA(User Defined Attribute)</span></a></li>
 
 
 
 
 
 	
-	<li class="expand-container open"><a class='expand-toggle' href="#"><span >subpkg</span></a><ul>
-		
-		
+	
+	
+		<li class="expand-container open"><a class='expand-toggle' href="#"><span >subpkg</span></a><ul>
+			
 
-	<li><a href="cookbook-subpkg--subpkg.test.html"><span >test</span></a></li>
+	<li><a href="cookbook-subpkg--subpkg.test.html"><span >サブパッケージの作り方</span></a></li>
 
 
-	</ul></li>
+		</ul></li>
+	
+
+
+
+
+
+
+
+	
+	
+	
+		<li class="expand-container open"><a class='expand-toggle' href="#"><span >windows</span></a><ul>
+			
+
+	<li><a href="cookbook-windows--windows.basic.html"><span >Win32API</span></a></li>
+
+
+		</ul></li>
+	
+
+
+
+
+
+
+
+	
+	
+	
+		<li class="expand-container open"><a class='expand-toggle' href="#"><span >libdparse_usage</span></a><ul>
+			
+
+	<li><a href="cookbook-libdparse_usage--libdparse_usage.example.html"><span >libdparse</span></a></li>
+
+
+		</ul></li>
+	
+
 
 
 
 </ul>
 </div>
-            <div class="content">                <h1>array_example</h1>
-                
+            <div class="content">                
                 <div class="quickindex" id="quickindex"></div>
                 
-                <div class="ddoc_summary">動的配列と静的配列の操作についてまとめます。
-</div><div class="ddoc_description">要素の初期化、要素の追加、要素の削除、ソート(WIP)、ループ操作(WIP)</div>
-<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+                <h1><div class="ddoc_summary">配列
+</div></h1><div class="ddoc_description">動的配列と静的配列の操作についてまとめます。
+<div class="ddoc_blankline"></div>
+
+要素の初期化、要素の追加、要素の削除、ソート(WIP)、ループ操作(WIP)</div>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  初期化の例です
 <pre class="d_code notranslate"><span class="d_comment">// 簡単な配列は new T[N] という形式で初期化できます
 </span><span class="d_keyword">int</span>[] data = <span class="d_keyword">new</span> <span class="d_keyword">int</span>[100];
@@ -68,7 +177,7 @@
 <span class="d_keyword">assert</span>(data.length == 100);
 </pre>
 </div>
-<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  二次元以上の多次元配列を一括で確保する例です
 <pre class="d_code notranslate"><span class="d_comment">// 4要素の配列を要素に持つ2要素の配列を初期化します
 </span><span class="d_comment">// 型に対してコンストラクタのように初期化でき、引数の順序は外側から（使うときにアクセスする順）指定するイメージになります
@@ -83,7 +192,7 @@
 <span class="d_keyword">assert</span>(data2[1][2].length == 4);
 </pre>
 </div>
-<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  要素のインデックス、または条件式を指定した値の削除
 <div class="ddoc_blankline"></div>
 
@@ -102,7 +211,7 @@
 <span class="d_keyword">assert</span>(data == [10, 30, 40, 50]);
 </pre>
 </div>
-<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  要素の追加の例です。
 <div class="ddoc_blankline"></div>
 
@@ -115,7 +224,7 @@ data ~= 20;
 <span class="d_keyword">assert</span>(data == [10, 20]);
 </pre>
 </div>
-<span class="dlang_runnable"></span><div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  事前にサイズがわからない配列を構築する場合は <span class="d_inlinecode donthyphenate notranslate">std.array</span> の <span class="d_inlinecode donthyphenate notranslate">appender</span> を使用すると効率的です。
 <div class="ddoc_blankline"></div>
 

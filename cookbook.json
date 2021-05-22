@@ -8,6 +8,7 @@
    {
     "name" : "__unittest_L13_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "初期化の例です\n",
     "line" : 13,
     "char" : 1,
@@ -17,6 +18,7 @@
    {
     "name" : "__unittest_L27_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "二次元以上の多次元配列を一括で確保する例です\n",
     "line" : 27,
     "char" : 1,
@@ -26,6 +28,7 @@
    {
     "name" : "__unittest_L49_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "要素のインデックス、または条件式を指定した値の削除\n\n`std.algorithm` の `remove` を使います\n\n`remove` : $(LINK https://dlang.org/phobos/std_algorithm_mutation.html#.remove)\n",
     "line" : 49,
     "char" : 1,
@@ -35,6 +38,7 @@
    {
     "name" : "__unittest_L67_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "要素の追加の例です。\n\n動的配列に対しては `~=` 演算子で要素を追加することができます。\n",
     "line" : 67,
     "char" : 1,
@@ -44,6 +48,7 @@
    {
     "name" : "__unittest_L84_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "事前にサイズがわからない配列を構築する場合は `std.array` の `appender` を使用すると効率的です。\n\n要素の追加は `~=` または `put` で行います。\n\n`appender` : $(LINK https://dlang.org/phobos/std_array.html#appender)\n",
     "line" : 84,
     "char" : 1,
@@ -61,6 +66,7 @@
    {
     "name" : "__unittest_L11_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# データ操作\n",
     "line" : 11,
     "char" : 1,
@@ -70,6 +76,7 @@
    {
     "name" : "__unittest_L66_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# プロパティ\n",
     "line" : 66,
     "char" : 1,
@@ -79,6 +86,7 @@
    {
     "name" : "__unittest_L112_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "## 空連想配列とnull\n",
     "line" : 112,
     "char" : 1,
@@ -96,6 +104,7 @@
    {
     "name" : "__unittest_L13_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "ファイルの書き込みを専用のスレッドで処理することで、大量の書き込みを効率良く行う例です。\n\nこれは主に大量の繰り返し計算に伴うログの記録や計算の途中経過を保存する場合のパターンとして役立ちます。\n",
     "line" : 13,
     "char" : 1,
@@ -105,6 +114,7 @@
    {
     "name" : "__unittest_L90_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "前述の大量書き込みの例に対し、起動する処理を使いまわしが可能な関数として定義する例です。\n\n実行に必要なパラメーターを引数として宣言しておくとspawnの際に渡すことができます。\n",
     "line" : 90,
     "char" : 1,
@@ -142,6 +152,7 @@
    {
     "name" : "__unittest_L16_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# CSVのパース\n",
     "line" : 16,
     "char" : 7,
@@ -154,6 +165,7 @@
    {
     "name" : "__unittest_L40_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "もう少し複雑な場合\n",
     "line" : 40,
     "char" : 7,
@@ -166,6 +178,7 @@
    {
     "name" : "__unittest_L87_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "構造体でデータ構造をレイアウトする場合\n",
     "line" : 87,
     "char" : 7,
@@ -178,6 +191,7 @@
    {
     "name" : "__unittest_L133_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# CSVの書き出し\n\n残念ながら、CSVを書き出す機能はありません。自分で作ります。\n以下の例では汎用性を高めるため、`\",\\n`を含むものを変換することを前提とします。\nこれらが含まれると、各セルをエスケープする必要が出るためです。\n数値だけということがあらかじめわかっているときなど、\nエスケープする必要がない場合は`format!\"%-(%-(%-s,%)\\n%)\"(mat)`とするだけでOK。\n",
     "line" : 133,
     "char" : 7,
@@ -198,6 +212,7 @@
    {
     "name" : "__unittest_L15_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 文字列⇔JSON\n",
     "line" : 15,
     "char" : 7,
@@ -210,6 +225,7 @@
    {
     "name" : "__unittest_L35_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 数値⇔JSON\n",
     "line" : 35,
     "char" : 7,
@@ -222,6 +238,7 @@
    {
     "name" : "__unittest_L74_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 真偽値・null⇔JSON\n\n真偽値(true / false)とnullの状態は、上記文字列や数値とは異なり、\nそれぞれ個別にJSONTypeが存在します。\n",
     "line" : 74,
     "char" : 7,
@@ -234,6 +251,7 @@
    {
     "name" : "__unittest_L111_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 配列⇔JSON\n",
     "line" : 111,
     "char" : 7,
@@ -246,6 +264,7 @@
    {
     "name" : "__unittest_L153_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 連想配列⇔JSON\n",
     "line" : 153,
     "char" : 7,
@@ -258,6 +277,7 @@
    {
     "name" : "__unittest_L214_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# JSONファイルの書き込み・読み込み\n",
     "line" : 214,
     "char" : 7,
@@ -278,6 +298,7 @@
    {
     "name" : "__unittest_L13_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 時間を表す7つの型\n\n以下の説明では、「時刻」「時間」「期間」を明確に使い分けます。\n",
     "line" : 13,
     "char" : 7,
@@ -290,6 +311,7 @@
    {
     "name" : "__unittest_L27_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "\n## 1. 「時間」 $(D Duration)\nDurationは「時間」を表す型です。\nここでの「時間」とは、10秒間とか、3時間、のような、時間的な長さを表す表現です。\n各種単位の「時間」を得るには、hours関数や、seconds関数のようなものを core.time からimportして使います。\n",
     "line" : 27,
     "char" : 7,
@@ -302,6 +324,7 @@
    {
     "name" : "__unittest_L48_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "## 2. 「時刻」 $(D SysTime)\n\nSysTimeは「時刻」を表す型です。\n現在時刻を取得するには、 std.datetime でimportできるClockのメソッドを使用します。\n",
     "line" : 48,
     "char" : 7,
@@ -314,6 +337,7 @@
    {
     "name" : "__unittest_L66_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "## 3. 「時刻」 $(D DateTime)\n\nDateTimeは「時刻」を表す型です。\nただし、SysTimeとは内部表現が違います。\nSysTimeは時差を考慮しますが、DateTimeは考慮せず、ただ\n何年何月何日の何時何分何秒という情報だけを持っています。\nミリ秒以下の情報も持ちません。\n",
     "line" : 66,
     "char" : 7,
@@ -326,6 +350,7 @@
    {
     "name" : "__unittest_L85_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "## 4. 「日付」 $(D Date)\n\nDateは、DateTimeのうち、何年何月何日(つまり日付)の部分です。\n",
     "line" : 85,
     "char" : 7,
@@ -338,6 +363,7 @@
    {
     "name" : "__unittest_L120_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "## 5. $(D TimeOfDay)\n\nTimeOfDayは、DateTimeのうち、「何時何分何秒」の部分です。\n",
     "line" : 120,
     "char" : 7,
@@ -350,6 +376,7 @@
    {
     "name" : "__unittest_L134_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "## 6. 「期間」 $(D Interval)\n\n2つの「時刻」の間の時間を「期間」とすることができます。\n",
     "line" : 134,
     "char" : 7,
@@ -362,6 +389,7 @@
    {
     "name" : "__unittest_L151_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "## 7. 「時間」 $(D MonoTime)\n\n2つ目の「時間」 MonoTime は、ベンチマークやゲームのFPSの計算などで使用される、\n高精度な時間単位を扱います。\nまた、NTPによる巻き戻しがおこらず、単調増加(monotonic)であることが特徴です。\n「時間」を測定するストップウォッチで得られます。\n",
     "line" : 151,
     "char" : 7,
@@ -374,6 +402,7 @@
    {
     "name" : "__unittest_L171_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# SysTimeと文字列の変換\n",
     "line" : 171,
     "char" : 7,
@@ -386,6 +415,7 @@
    {
     "name" : "__unittest_L214_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# Durationの使い方\n",
     "line" : 214,
     "char" : 7,
@@ -398,6 +428,7 @@
    {
     "name" : "__unittest_L242_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# StopWatchの使い方\n",
     "line" : 242,
     "char" : 7,
@@ -410,6 +441,7 @@
    {
     "name" : "__unittest_L298_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# タイムゾーンの扱い\n",
     "line" : 298,
     "char" : 7,
@@ -430,6 +462,7 @@
    {
     "name" : "__unittest_L39_C9",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 従来の方法とその欠点\n\n従来の例外機構のない言語では、関数の戻り値をチェックするのが一般的でした。\nしかし、戻り値のチェックは、以下のような欠点を抱えていました。\n\n1.  戻り値が無視されがち\n    戻り値でエラーが発生したことを伝えても、その戻り値が無視されてしまった場合、\n    失敗しても何事もなかったかのように処理が継続してしまいます。\n2.  プログラムの流れが汚れがち\n    たとえif文でエラーチェックをしても、同じ関数内で2回3回とチェックをするうち、\n    ネストが深くなったり、gotoで関数末尾のエラー処理部へジャンプしたり、\n    エラー処理のための本来行うべき処理とは関係の浅いフラグ変数が生じたりと、\n    プログラムが汚くなる場合が多く存在しました。\n3.  エラー処理分散しがち\n    同じエラーに対処しているはずなのに、呼び出した関数すべてにエラー処理を仕込む\n    必要があったり、様々なエラーをまとめて処理するのが難しい場合がありました。\n4.  nullを参照してしまう問題\n    1の場合とかぶりますが、nullが返る可能性のあるものでチェックを省くと、所謂\n    ぬるぽ(Null Pointer Exception)や、AV(Access Violation)、\n    SEGV(セグフォ/Segmentation Fault/Segmentation Violation)が発生します。\n    ぬるぽが一昔前にネットスラングにまでなったように、プログラムのユーザーが目に\n    する深刻な問題になりやすい異常です。しっかりガッ(対処)する必要がありますが、\n    プログラムの本来の処理に手一杯になると対処を怠ってしまうことも。\n\n以下に挙げる例は例外を使用しない場合の問題になりやすい記述方法です。\n",
     "line" : 39,
     "char" : 9,
@@ -442,6 +475,7 @@
    {
     "name" : "__unittest_L207_C9",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 例外のメリット\n\n例外機構を用いるメリットは、明示しない限り例外が無視されず、例外処理に対応する\n箇所をまとめて記述することができるため、本来のプログラムに集中した記述ができる\nという点です。\n\n以下の例は、先述の戻り値のチェックで問題になりやすいものを、例外を使用して解決\nする場合を示したものです。\n",
     "line" : 207,
     "char" : 9,
@@ -454,6 +488,7 @@
    {
     "name" : "__unittest_L326_C9",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# デメリットと使用を避けるべき時の判断基準\n\nデメリットとしては、例外が発生するとプログラムを途中で切り上げてスタックの\n巻戻し処理が行われるといったことが起こるため、処理速度は遅いことが挙げられます。\nこのため、適切な箇所でのみ例外機構を利用しましょう。\n具体的には以下のようなケースでは、例外機構を用いるより、if文による事前チェックや\n戻り値のチェック、表明(assert)や契約プログラミング(in/out/invariant)が望ましい\nでしょう。\n\n1.  秒間何千何万と繰り返し実行されるような処理の中で例外を発生させたり捕まえたり\n    をするのは止めておくのがよいでしょう。\n2.  事前のチェックを行うことで容易かつ高速に異常発生を防ぐことができるものは、\n    チェックしましょう。\n    (例外発生の頻度が著しく低い場合や、チェックが重い場合はとりあえずトライした\n    方が速いかも)\n3.  外的要因が絡まない場合はassertや、事前条件で代用できるかもしれません。\n    外的要因というのは、プログラムの利用者が作成したファイルや、ネットワーク越し\n    に渡されるパラメータ、GUIやCUIで入力した値、コマンドライン引数、ハードウェア\n    の状態に依存するようなものなどです。\n    例えばプログラム自身で作成したファイルを読み込む場合、文法チェック等は\n    assertによるチェックが望ましいかもしれません。\n4.  ほかの言語の関数呼び出しを行う場合、他言語間での例外のやり取りはできません。\n    これは、OSのAPIやシステムコール、C言語の標準関数を使用する場合も同様です。\n\n以下に挙げる例はあえて例外を使用しない方がよい場合の典型的な処理です。\n",
     "line" : 326,
     "char" : 9,
@@ -466,6 +501,7 @@
    {
     "name" : "__unittest_L405_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# try-catch\n\n基本的な文法は `try {} catch(Exception e){}` です。\ntryの中(呼び出した関数を含め)で例外が発生した場合、catchで例外を捕捉できます。\nExceptionと記載しましたが、ここには例外の型を記載でき、よりマッチする条件の型\nから順番に記載することで、適切な対処を行うことが可能です。\n",
     "line" : 405,
     "char" : 7,
@@ -478,6 +514,7 @@
    {
     "name" : "__unittest_L450_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# try-catch-finary\n",
     "line" : 450,
     "char" : 7,
@@ -490,6 +527,7 @@
    {
     "name" : "__unittest_L458_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# scope (success) / scope (failure) / scope (exit)\n",
     "line" : 458,
     "char" : 7,
@@ -502,6 +540,7 @@
    {
     "name" : "__unittest_L466_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 例外とエラー\n",
     "line" : 466,
     "char" : 7,
@@ -514,6 +553,7 @@
    {
     "name" : "__unittest_L474_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# nothrow\n",
     "line" : 474,
     "char" : 7,
@@ -526,6 +566,7 @@
    {
     "name" : "__unittest_L482_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 例外の自作\n",
     "line" : 482,
     "char" : 7,
@@ -538,6 +579,7 @@
    {
     "name" : "__unittest_L490_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# std.exception.enforce\n",
     "line" : 490,
     "char" : 7,
@@ -550,6 +592,7 @@
    {
     "name" : "__unittest_L498_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# std.exception.collectException\n",
     "line" : 498,
     "char" : 7,
@@ -562,6 +605,7 @@
    {
     "name" : "__unittest_L506_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# std.exception.ifThrown\n",
     "line" : 506,
     "char" : 7,
@@ -574,6 +618,7 @@
    {
     "name" : "__unittest_L514_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# std.exception.assertThrown / std.exception.assertNotThrown\n",
     "line" : 514,
     "char" : 7,
@@ -586,6 +631,7 @@
    {
     "name" : "__unittest_L522_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# std.exception.handle\n",
     "line" : 522,
     "char" : 7,
@@ -606,6 +652,7 @@
    {
     "name" : "__unittest_L12_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "テキストファイル操作の例です。\n",
     "line" : 12,
     "char" : 1,
@@ -615,6 +662,7 @@
    {
     "name" : "__unittest_L52_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "ディレクトリ操作の例です。\n",
     "line" : 52,
     "char" : 1,
@@ -624,6 +672,7 @@
    {
     "name" : "__unittest_L97_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "パスに関する操作の例です。\n",
     "line" : 97,
     "char" : 1,
@@ -641,6 +690,7 @@
    {
     "name" : "__unittest_L13_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "基本的な引数解析の例です\n",
     "line" : 13,
     "char" : 1,
@@ -650,6 +700,7 @@
    {
     "name" : "__unittest_L42_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "適度な折り返しを入れてコードフォーマッターでも可読性を保つ例です。\n",
     "line" : 42,
     "char" : 1,
@@ -667,6 +718,7 @@
    {
     "name" : "__unittest_L11_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 正当性の検証\n",
     "line" : 11,
     "char" : 7,
@@ -679,6 +731,7 @@
    {
     "name" : "__unittest_L59_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 暗黙の型変換可能かどうかの検証\n",
     "line" : 59,
     "char" : 7,
@@ -691,6 +744,7 @@
    {
     "name" : "__unittest_L105_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 型の分類\n",
     "line" : 105,
     "char" : 7,
@@ -711,6 +765,7 @@
    {
     "name" : "__unittest_L13_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "モジュールの定義一覧を取得する例です。\n\n`__traits(allMembers, モジュール名)`と書きます。\n",
     "line" : 13,
     "char" : 7,
@@ -723,6 +778,7 @@
    {
     "name" : "__unittest_L27_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "任意のモジュール名から定義一覧を取得するイディオムです。\n\nモジュールの参照を`mixin`と`std.meta.Alias`を使って取得します。\n",
     "line" : 27,
     "char" : 7,
@@ -735,6 +791,7 @@
    {
     "name" : "__unittest_L56_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "実際にコンパイルできるかどうか確認するイディオムです。\n\nD言語のコード片が実際にコンパイルできる場合にはtrueに、そうでない場合はfalseに評価されます。\nこの強力なイディオムのやり方は2種類あって、`is(typeof(...))`を使用する方法と、`__traits(compiles, ...)`を使用する方法があります。\nどちらでも効果はほぼ同じですが、やや`is(typeof(...))`のほうがチェックが緩いです。過去dmdへ多大な貢献をされた[9rnsrさんの記事](https://qiita.com/9rnsr/items/5e3e434ea8719fbeea82)で解説されています。\n\nなお、このイディオムはきわめて強力な一方、実際にコンパイルできるかどうか、コンパイラが実際にコンパイルを試行して確かめる必要があるため、コンパイル速度的にはやや不利です。\nそのためかどうなのか、std.rangeのisInputRangeなどは、[過去この方法で実装されていた](https://github.com/dlang/phobos/blob/c4f1c43366c79f4ff9ddfadbc0a8c943e0cb5c94/std/range.d#L528)こともありますが、[今は違います](https://github.com/dlang/phobos/blob/d29ebfe6ec0fd3879513e0f8a533b234f3d101e1/std/range/primitives.d#L171)。\n",
     "line" : 56,
     "char" : 7,
@@ -755,6 +812,7 @@
    {
     "name" : "__unittest_L13_C9",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "HTTPでGET\n",
     "line" : 13,
     "char" : 9,
@@ -767,6 +825,7 @@
    {
     "name" : "__unittest_L62_C9",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "文字コードの話\n",
     "line" : 62,
     "char" : 9,
@@ -779,6 +838,7 @@
    {
     "name" : "__unittest_L106_C9",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "認証付きProxyを通す\n",
     "line" : 106,
     "char" : 9,
@@ -791,6 +851,7 @@
    {
     "name" : "__unittest_L143_C9",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "クライアント認証する\n\nCurlOption.sslcertなどのオプションを使用します。\n\n-  WindowsではDMDやLDCにOpenSSLがリンクされていないlibcurl.dllが使われているようですが\n   クライアント認証にはOpenSSLが必要となりますので、OpenSSLがリンクされたlibcurl.dllを使用する必要があります。$(BR)\n-  さらに、cURLの公式で配布している64bitのDLLは libcurl-x64.dll という名称ですが、`std.net.curl`が使用するDLLの名称は`libcurl.dll`または`curl.dll`固定です。\n   このため、ファイル名を変更する必要があります。\n-  また、OpenSSLのDLL`libcrypto-1_1-x64.dll`、`libssl-1_1-x64.dll`なども用意します。\n\nなお、CA証明書、クライアント証明書や秘密鍵の生成方法・変換方法はここでは解説いたしません。\n",
     "line" : 143,
     "char" : 9,
@@ -798,6 +859,112 @@
      "@system"
     ],
     "endline" : 198,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "numeric_example",
+  "kind" : "module",
+  "file" : "/home/runner/work/Cookbook/Cookbook/source/numeric_example.d",
+  "comment" : "数値計算\n\n標準ライブラリで提供される数値計算の関数などについてまとめます。\n\n主に `std.math` や `std.mathspecial`、 `std.numeric` を使った例を対象とします。\n",
+  "members" : [
+   {
+    "name" : "__unittest_L19_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "浮動小数点数の同値判定の例です。\n\n浮動小数点数は計算の過程で誤差が出るため、相対誤差や絶対誤差を考慮して比較します。\n\n`std.math` の `isClose` を利用します。\n\nstd.math.isClose : $(LINK https://dlang.org/phobos/std_math.html#.isClose)$(BR)\n",
+    "line" : 19,
+    "char" : 1,
+    "endline" : 38,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L38_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "内積を計算する例です。\n\n`std.numeric` の `dotProduct` を利用します。\n",
+    "line" : 38,
+    "char" : 1,
+    "endline" : 54,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L54_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "コサイン類似度を計算する例です。\n\n2つのレンジを受け取って、その類似度を0-1で返します。\n",
+    "line" : 54,
+    "char" : 1,
+    "endline" : 65,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "parallelism_example",
+  "kind" : "module",
+  "file" : "/home/runner/work/Cookbook/Cookbook/source/parallelism_example.d",
+  "comment" : "並列処理\n\n`std.parallelism` を使った並列処理の例をまとめます。\n",
+  "members" : [
+   {
+    "name" : "__unittest_L13_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "配列データなどを元に、値毎の処理を並列で行い高速化する例です。\n\nこれは「データ並列」と呼ばれ、 `parallel` 関数を使うことで簡単に行えます。\n",
+    "line" : 13,
+    "char" : 1,
+    "endline" : 37,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L37_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "`parallel` で実行する処理で一部同期が必要となる場合の例です。\n\nいくつか実現方法はありますが、ここでは組み込みの `synchronized` 文を使い、複数のスレッドが同時に処理できない区間（クリティカルセクション）を定義します。\nこれは排他処理とも呼ばれます。\n",
+    "line" : 37,
+    "char" : 1,
+    "endline" : 69,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L69_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "並列処理の基本となる `task` の使い方をまとめます。\n\nこれは何らかの「処理」を抽象化したオブジェクトであり、指定した処理を別スレッドで処理させることができます。\n\n- 新しくスレッドを起動して実行する\n- TaskPoolとして用意しておいたスレッドで実行する\n\n以下は、処理を定義して新しいスレッドで実行、完了を待機する例です。\n",
+    "line" : 69,
+    "char" : 1,
+    "endline" : 98,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L98_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "ランタイムが用意したスレッドを使って `task` を実行する例です。\n\n実行の際に `taskPool` を使うことでスレッドを使いまわし、実行の度に新しくスレッドを起動するコストが削減できます。\n\n処理の実行は、`taskPool` に `task` を `put` することにより行えます。\n\nなお、`taskPool` が起動するスレッド数は環境によって異なり、`CPU数 - 1` として計算されます。\nこの `CPU数` は `totalCPUs` という定数によって得ることができます。\n",
+    "line" : 98,
+    "char" : 1,
+    "endline" : 129,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L129_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "戻り値を持つ `task` の使用例です。\n\n`task` で実行する処理は戻り値を持つことができ、処理の結果は `yieldForce` の戻り値として得られます。\n\nこれを `executeInNewThread` と組み合わせると、簡便な「戻り値を持つスレッド」として使うことができます。\n",
+    "line" : 129,
+    "char" : 1,
+    "endline" : 154,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L154_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "スレッド数を指定した独自の TaskPool を作る例です。\n\n処理が通信などCPUを使わない処理を含む場合、CPUより多くのスレッドを起動しておくことで処理の高速化が期待できます。\n",
+    "line" : 154,
+    "char" : 1,
+    "endline" : 192,
     "endchar" : 1
    }
   ]
@@ -811,6 +978,7 @@
    {
     "name" : "__unittest_L13_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "基本的なプロセス起動を行う操作の例です。\n",
     "line" : 13,
     "char" : 1,
@@ -820,43 +988,57 @@
    {
     "name" : "__unittest_L38_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "パイプでコマンドをつなげる例です。\n",
     "line" : 38,
     "char" : 1,
-    "endline" : 88,
+    "endline" : 110,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L88_C9",
+    "name" : "__unittest_L110_C1",
     "kind" : "function",
+    "protection" : "public",
+    "comment" : "WindowsのGUIからのコンソールアプリケーション呼び出しのときにコンソール画面を出さないようにする。\n\nWindows特有の問題になりますが、GUIアプリケーションでビルドした場合、executeやspawnProcess等を実行してコンソールアプリケーションを起動すると、実行中のコンソール画面が表示されてしまうということがあります。\nこれを抑止するため、実行時に `Config.suppressConsole` を指定することで、コンソール画面の表示を行わないようにすることができます。\n\nSee_Also: https://dlang.org/phobos/std_process.html#.Config.suppressConsole\n",
+    "line" : 110,
+    "char" : 1,
+    "endline" : 143,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L143_C9",
+    "kind" : "function",
+    "protection" : "public",
     "comment" : "たくさんパイプしながら、データを小分けにして渡していく場合\n",
-    "line" : 88,
+    "line" : 143,
     "char" : 9,
     "storageClass" : [
      "@system"
     ],
-    "endline" : 182,
+    "endline" : 237,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L182_C1",
+    "name" : "__unittest_L237_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "標準出力をファイルにリダイレクトする例です\n",
-    "line" : 182,
+    "line" : 237,
     "char" : 1,
-    "endline" : 208,
+    "endline" : 263,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L208_C7",
+    "name" : "__unittest_L263_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "環境変数を扱う例です。\n",
-    "line" : 208,
+    "line" : 263,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 236,
+    "endline" : 291,
     "endchar" : 1
    }
   ]
@@ -870,6 +1052,7 @@
    {
     "name" : "__unittest_L11_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "基本的な乱数を生成する例です。\n",
     "line" : 11,
     "char" : 7,
@@ -882,6 +1065,7 @@
    {
     "name" : "__unittest_L42_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "配列を乱数で初期化する例です。\n",
     "line" : 42,
     "char" : 7,
@@ -894,6 +1078,7 @@
    {
     "name" : "__unittest_L62_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "シミュレーション用途など、再現可能な乱数を作るためにシードを指定する例です。\n\n実行時に毎回異なるシードを使う場合は、 unpredictableSeed を使用します。\n",
     "line" : 62,
     "char" : 7,
@@ -906,6 +1091,7 @@
    {
     "name" : "__unittest_L99_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "標準正規分布に基づく乱数を生成する例です。\n\nstd.mathspecial にある normalDistributionInverse を使うことで確率変数から逆変換できます。\n\n`normalDistributionInverse` : $(LINK https://dlang.org/phobos/std_mathspecial.html#normalDistributionInverse)\n",
     "line" : 99,
     "char" : 7,
@@ -926,10 +1112,61 @@
    {
     "name" : "__unittest_L33_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "最小のレンジ(InputRange)を作る\n",
     "line" : 33,
     "char" : 1,
-    "endline" : 140,
+    "endline" : 145,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L145_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "連番のレンジを作る`iota`の例です。\n",
+    "line" : 145,
+    "char" : 1,
+    "endline" : 163,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L163_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "引数に指定した要素だけのレンジを作る`only`の例です。\n",
+    "line" : 163,
+    "char" : 1,
+    "endline" : 183,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L183_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "引数に指定した要素を無限に繰り返す`repeat`の例です。\n",
+    "line" : 183,
+    "char" : 1,
+    "endline" : 208,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L208_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "指定された関数を使ってレンジを生成する`generate`の例です。\n",
+    "line" : 208,
+    "char" : 1,
+    "endline" : 231,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L231_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "漸化式のレンジを生成する`recurrence`の例です。\n",
+    "line" : 231,
+    "char" : 1,
+    "endline" : 261,
     "endchar" : 1
    }
   ]
@@ -943,6 +1180,7 @@
    {
     "name" : "__unittest_L11_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 正規表現オブジェクトの生成\n",
     "line" : 11,
     "char" : 7,
@@ -955,20 +1193,9 @@
    {
     "name" : "__unittest_L25_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 正規表現用の文字列\n",
     "line" : 25,
-    "char" : 7,
-    "storageClass" : [
-     "@safe"
-    ],
-    "endline" : 55,
-    "endchar" : 1
-   },
-   {
-    "name" : "__unittest_L55_C7",
-    "kind" : "function",
-    "comment" : "# 部分文字列の検索\n",
-    "line" : 55,
     "char" : 7,
     "storageClass" : [
      "@safe"
@@ -979,73 +1206,92 @@
    {
     "name" : "__unittest_L64_C7",
     "kind" : "function",
-    "comment" : "## 部分文字列の検索 (matchFirst)\n",
+    "protection" : "public",
+    "comment" : "# 部分文字列の検索\n",
     "line" : 64,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 128,
+    "endline" : 73,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L128_C7",
+    "name" : "__unittest_L73_C7",
     "kind" : "function",
+    "protection" : "public",
+    "comment" : "## 部分文字列の検索 (matchFirst)\n",
+    "line" : 73,
+    "char" : 7,
+    "storageClass" : [
+     "@safe"
+    ],
+    "endline" : 137,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L137_C7",
+    "kind" : "function",
+    "protection" : "public",
     "comment" : "## 部分文字列の検索 (matchAll)\n",
-    "line" : 128,
+    "line" : 137,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 175,
+    "endline" : 184,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L175_C7",
+    "name" : "__unittest_L184_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 文字列の置換\n",
-    "line" : 175,
+    "line" : 184,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 198,
+    "endline" : 207,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L198_C7",
+    "name" : "__unittest_L207_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 文字列の分割\n",
-    "line" : 198,
+    "line" : 207,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 215,
+    "endline" : 224,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L215_C7",
+    "name" : "__unittest_L224_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# Unicodeプロパティ\n",
-    "line" : 215,
+    "line" : 224,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 227,
+    "endline" : 236,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L227_C7",
+    "name" : "__unittest_L236_C7",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "# 先読み・後読み\n",
-    "line" : 227,
+    "line" : 236,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 303,
+    "endline" : 312,
     "endchar" : 1
    }
   ]
@@ -1059,6 +1305,7 @@
    {
     "name" : "__unittest_L18_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "文字列の連結\n\n事前に長さの分からない文字列を構築する場合、`std.array` の `appender` を使います。\n\n`appender` : https://dlang.org/phobos/std_array.html#appender\n",
     "line" : 18,
     "char" : 1,
@@ -1068,6 +1315,7 @@
    {
     "name" : "__unittest_L42_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "書式化文字列\n\n`std.format` の `format` を使います。\n\nhttps://dlang.org/phobos/std_format.html#.format\n",
     "line" : 42,
     "char" : 1,
@@ -1077,6 +1325,7 @@
    {
     "name" : "__unittest_L58_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "完全一致、辞書順での比較\n",
     "line" : 58,
     "char" : 1,
@@ -1086,6 +1335,7 @@
    {
     "name" : "__unittest_L72_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "大文字小文字を無視して比較\n\n`std.uni` の `icmp` を使います\n\n`icmp` : https://dlang.org/phobos/std_uni.html#icmp\n",
     "line" : 72,
     "char" : 1,
@@ -1095,6 +1345,7 @@
    {
     "name" : "__unittest_L97_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "「で始まる」「で終わる」の例\n\n`std.algorithm` の `startsWith`, `endsWith` を使います。\n\n`startsWith` : $(LINK https://dlang.org/phobos/std_algorithm_searching.html#.startsWith)$(BR)\n`endsWith` : $(LINK https://dlang.org/phobos/std_algorithm_searching.html#.endsWith)\n",
     "line" : 97,
     "char" : 1,
@@ -1104,10 +1355,59 @@
    {
     "name" : "__unittest_L119_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "文字列が出現する位置を検索します。\n\n`std.string` の `indexOf` を使用します。\n\n`indexOf` : https://dlang.org/phobos/std_string.html#.indexOf\n",
     "line" : 119,
     "char" : 1,
-    "endline" : 136,
+    "endline" : 150,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L150_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "プログラムの整形文字列表現\n\nchompPrefixやstrip、outdent、などを使うことで、プログラム言語などの文字列表現をいい感じに記載することができます。\n\nポイントはoutdentでインデントを解除することで、その前後にoutdentの入力にマッチするようにいい感じにchompPrefixで先頭の改行を削除したり、outdent結果を欲しい形に合うようにstripで先頭・末尾の改行を含む空白文字を削除するなどの前処理・後処理をします。\n\nパーサーを扱うようなプログラムなどで活躍します。\n\n`outdent`: https://dlang.org/phobos/std_string.html#.outdent$(BR)\n`chompPrefix`: https://dlang.org/phobos/std_string.html#.chompPrefix$(BR)\n`strip`: https://dlang.org/phobos/std_string.html#.strip\n",
+    "line" : 150,
+    "char" : 1,
+    "endline" : 214,
+    "endchar" : 1
+   }
+  ]
+ },
+ {
+  "name" : "typecons_example",
+  "kind" : "module",
+  "file" : "/home/runner/work/Cookbook/Cookbook/source/typecons_example.d",
+  "comment" : "型を作るユーティリティ\n\n様々な型を作れるtemplateを提供する`std.typecons`パッケージについて解説します。\n",
+  "members" : [
+   {
+    "name" : "__unittest_L14_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "nullになる可能性のある値を表現するNullableの例です\n\nNullableを利用することで、値が存在しない可能性のある型を表現できます。\nint等の組み込み型やstructについても、nullとなることを明確に示せます。\n",
+    "line" : 14,
+    "char" : 1,
+    "endline" : 63,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L63_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "ポインタを格納するためのNullableであるNullableRefの例です\n\nポインタ型の場合はポインタだけでnullの状態を表現できるため、NullableRefを利用することでサイズを節約できます。\n",
+    "line" : 63,
+    "char" : 1,
+    "endline" : 97,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L97_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "constやimmutableの参照型の変数でも再代入可能とするRebindableの例です\n\nconstやimmutableの参照型の変数はそのままでは再代入できませんが、Rebindableでラップした変数は再代入可能になります。\n",
+    "line" : 97,
+    "char" : 1,
+    "endline" : 126,
     "endchar" : 1
    }
   ]
@@ -1121,6 +1421,7 @@
    {
     "name" : "__unittest_L11_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "UDA取得の例です\n",
     "line" : 11,
     "char" : 1,
@@ -1130,6 +1431,7 @@
    {
     "name" : "__unittest_L31_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "特定のUDAを持ったメンバー抽出の例です\n",
     "line" : 31,
     "char" : 1,
@@ -1139,6 +1441,7 @@
    {
     "name" : "__unittest_L64_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "toStringの自動生成の例です\n",
     "line" : 64,
     "char" : 1,
@@ -1148,6 +1451,7 @@
    {
     "name" : "__unittest_L112_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "関数の引数に付与されたUDAを取得する例です\n",
     "line" : 112,
     "char" : 1,
@@ -1165,6 +1469,7 @@
    {
     "name" : "__unittest_L15_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "unittestとassert\n\n実行時ロジックについては、`assert` を使ってテストを記述します。\n\nunittestとassertは両方共debugビルドのときにのみ使われ、releaseビルドのときには除去されます。\n",
     "line" : 15,
     "char" : 1,
@@ -1174,6 +1479,7 @@
    {
     "name" : "__unittest_L37_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "unittestとstatic assert\n\nコンパイル時に確定する内容については、`static assert`を使ってテストを記述します。\n\nこのテストに失敗するとコンパイルエラーになります。\n",
     "line" : 37,
     "char" : 1,
@@ -1183,6 +1489,7 @@
    {
     "name" : "__unittest_L56_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "例外が発生することをテストする方法\n\n`assertThrown` 関数を使い、対象の関数が例外を発生させることを確認します。\nここでは関数の事前条件チェックでAssertErrorが起きることを確認します。\n\ncore.exception : $(LINK https://dlang.org/phobos/core_exception.html)$(BR)\nstd.exception : $(LINK https://dlang.org/phobos/std_exception.html)$(BR)\n",
     "line" : 56,
     "char" : 1,
@@ -1192,43 +1499,47 @@
    {
     "name" : "__unittest_L96_C9",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "@safe や @nogc 、nothrowであることを保証する方法\n\n属性をテストするには unittest自体を当該属性で修飾する方法が多く使われます。\nこのテストサンプルは `nothrow` 属性で修飾されています。\n\n`std.traits` の機能で関数属性を取り出すことも可能ですが、ブロック全体を修飾することで漏れがなくなります。\n",
     "line" : 96,
     "char" : 9,
     "storageClass" : [
      "nothrow"
     ],
-    "endline" : 115,
+    "endline" : 117,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L115_C1",
+    "name" : "__unittest_L117_C1",
     "kind" : "function",
-    "comment" : "浮動小数点数をテストする方法\n\n数値計算の結果は厳密なテストが難しいため、`approxEqual` を使い相対誤差などを利用した比較を行います。\n\nstd.math.approxEqual : $(LINK https://dlang.org/phobos/std_math.html#.approxEqual)$(BR)\n",
-    "line" : 115,
+    "protection" : "public",
+    "comment" : "浮動小数点数をテストする方法\n\n数値計算の結果は厳密なテストが難しいため `isClose` を使い相対誤差などを利用した比較を行います。\n\nstd.math.isClose : $(LINK https://dlang.org/phobos/std_math.html#.isClose)$(BR)\n\n類似の `approxEqual` はDMDのバージョンで非推奨となったため、 `isClose` を使うことが推奨されています。\n",
+    "line" : 117,
     "char" : 1,
-    "endline" : 150,
+    "endline" : 152,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L150_C1",
+    "name" : "__unittest_L152_C1",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "一般的なRangeの内容をテストする方法\n\nstd.algorithm 内の equal 関数を使ってRange同士を比較します。\n\nstd.algorithm : $(LINK https://dlang.org/phobos/std_algorithm_comparison.html)\n",
-    "line" : 150,
+    "line" : 152,
     "char" : 1,
-    "endline" : 175,
+    "endline" : 177,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L175_C9",
+    "name" : "__unittest_L177_C9",
     "kind" : "function",
+    "protection" : "public",
     "comment" : "ファイルの生成などを確認する方法\n\n単体テストはそれぞれが独立し、順不同および繰り返し実行できることが重要です。\n\n最初と `scope(exit)` でファイルの破棄を行うとテストの再現性や独立性が高まります。\n",
-    "line" : 175,
+    "line" : 177,
     "char" : 9,
     "storageClass" : [
      "@system"
     ],
-    "endline" : 190,
+    "endline" : 192,
     "endchar" : 1
    }
   ]

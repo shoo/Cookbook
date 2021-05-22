@@ -83,6 +83,14 @@
 
 
 
+	<li><a href="cookbook--numeric_example.html"><span >数値計算</span></a></li>
+
+
+
+	<li><a href="cookbook--parallelism_example.html"><span >並列処理</span></a></li>
+
+
+
 	<li><a href="cookbook--process_example.html"><span >プロセス</span></a></li>
 
 
@@ -100,6 +108,10 @@
 
 
 	<li><a href="cookbook--string_example.html"><span >文字列</span></a></li>
+
+
+
+	<li><a href="cookbook--typecons_example.html"><span >型を作るユーティリティ</span></a></li>
 
 
 
@@ -182,6 +194,36 @@
 
 
 
+
+
+
+	
+	
+	
+		<li class="expand-container open"><a class='expand-toggle' href="#"><span >vibed_usage</span></a><ul>
+			
+
+	<li><a href="cookbook-vibe-d_usage--vibed_usage.http.html"><span >HTTPサーバー</span></a></li>
+
+
+
+	<li><a href="cookbook-vibe-d_usage--vibed_usage.https.html"><span >HTTPSサーバー</span></a></li>
+
+
+
+	<li><a href="cookbook-vibe-d_usage--vibed_usage.rest.html"><span >RESTインターフェースの利用</span></a></li>
+
+
+
+	<li><a href="cookbook-vibe-d_usage--vibed_usage.web.html"><span >Webインターフェースの利用</span></a></li>
+
+
+		</ul></li>
+	
+
+
+
+
 </ul>
 </div>
             <div class="content">                
@@ -225,6 +267,15 @@ auto s0 = "\."; // undefined escape sequence \.
 <span class="d_comment">// また、全体をエスケープする場合なら`escaper`も有効です。
 </span><span class="d_keyword">auto</span> s3 = escaper(<span class="d_string">"."</span>);
 <span class="d_keyword">assert</span>(s0.equal(s3));
+
+<span class="d_comment">// `escaper`の戻り値は、`Escaper`という遅延評価を行うレンジになります。
+</span><span class="d_comment">// 実行時にstringと連結して新たなパターン文字列を作るような場合、`std.conv.to`や`std.conv.text`を使うと効率的です。
+</span><span class="d_keyword">import</span> std.conv : to, text;
+
+string s4 = <span class="d_string">"^"</span> ~ escaper(<span class="d_string">"https://dlang.org"</span>).to!string() ~ <span class="d_string">"$"</span>;
+string s5 = text(<span class="d_string">"^"</span>, escaper(<span class="d_string">"https://dlang.org"</span>), <span class="d_string">"$"</span>);
+<span class="d_keyword">assert</span>(s4 == <span class="d_string">`^https\:\/\/dlang\.org$`</span>);
+<span class="d_keyword">assert</span>(s5 == <span class="d_string">`^https\:\/\/dlang\.org$`</span>);
 </pre>
 </div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>

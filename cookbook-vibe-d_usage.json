@@ -49,17 +49,17 @@
     "comment" : "権限\n\nユーザーによってアクセスできるページの範囲を変えたい、という場合のやり方について説明します。\n\nSee_Also:\n- https://vibed.org/api/vibe.web.auth/\n- https://github.com/vibe-d/vibe.d/blob/master/examples/web-auth/source/app.d\n\n",
     "line" : 322,
     "char" : 1,
-    "endline" : 550,
+    "endline" : 542,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L550_C1",
+    "name" : "__unittest_L542_C1",
     "kind" : "function",
     "protection" : "public",
     "comment" : "RESTで認証\n\nTwitter等のOAuthのような、トークンを用いた認証を行う例です。\n\nRESTでは、セッション情報が使用できません。(そもそも原則としてRESTにはステートレスであることが求められます)\nそのため、REST APIとともにアクセス制限やユーザー情報等を扱う場合は、\nここでのアクセストークンのような固有の情報と、\nそのトークンの所有者であることを証明する秘密情報を使った認証を行うのがよいでしょう。\n\n今回のアクセストークンを用いたリソースアクセスは以下の手順で行います。\n\n1. リクエストトークンを作成\n2. ログイン\n3. ログイン済みのユーザーでリクエストトークンからPINの作成\n4. リクエストトークンとPINからアクセストークンの作成\n5. アクセストークンを用いてリソースにアクセス\n\nAttention:\nサンプルコードは適当に作成したものですので、セキュリティ的に十分優れているとは言えません。\nトークンの生成方法を工夫したり、nonceを加えてリプレイ攻撃耐性を上げたりと、工夫が必要です。\n",
-    "line" : 550,
+    "line" : 542,
     "char" : 1,
-    "endline" : 853,
+    "endline" : 845,
     "endchar" : 1
    }
   ]

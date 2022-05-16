@@ -701,77 +701,69 @@ runTask({
             .join(<span class="d_string">";"</span>);
 
         <span class="d_comment">// 認証なしで"/"をGETする
-</span>        <span class="d_keyword">auto</span> res = requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/"</span>), (<span class="d_keyword">scope</span> req) {});
-        <span class="d_keyword">assert</span>(res.statusCode == 200, res.toString);
-        <span class="d_keyword">assert</span>(res.contentType == <span class="d_string">"text/plain"</span>);
-        <span class="d_keyword">assert</span>(res.bodyReader.readAllUTF8() == <span class="d_string">"Index"</span>);
-        res.dropBody();
-        res.disconnect();
+</span>        requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/"</span>), (<span class="d_keyword">scope</span> req) {}, (<span class="d_keyword">scope</span> res) {
+            <span class="d_keyword">assert</span>(res.statusCode == 200, res.toString);
+            <span class="d_keyword">assert</span>(res.contentType == <span class="d_string">"text/plain"</span>);
+            <span class="d_keyword">assert</span>(res.bodyReader.readAllUTF8() == <span class="d_string">"Index"</span>);
+        });
 
         <span class="d_comment">// 認証なしでuser権限が必要なところを閲覧
-</span>        res = requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/entrance"</span>), (<span class="d_keyword">scope</span> req) {});
-        <span class="d_keyword">assert</span>(res.statusCode == 403, res.toString);
-        res.dropBody();
-        res.disconnect();
+</span>        requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/entrance"</span>), (<span class="d_keyword">scope</span> req) {}, (<span class="d_keyword">scope</span> res) {
+            <span class="d_keyword">assert</span>(res.statusCode == 403, res.toString);
+        });
 
         <span class="d_comment">// guest権限のユーザーでログインする
-</span>        res = requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/login"</span>), (<span class="d_keyword">scope</span> req) {
+</span>        requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/login"</span>), (<span class="d_keyword">scope</span> req) {
             req.method = HTTPMethod.POST;
             req.writeFormBody([<span class="d_string">"username"</span>: <span class="d_string">"marisa"</span>]);
+        }, (<span class="d_keyword">scope</span> res) {
+            <span class="d_keyword">assert</span>(res.statusCode == 302, res.toString);
+            saveCookie(res.cookies);
         });
-        <span class="d_keyword">assert</span>(res.statusCode == 302, res.toString);
-        saveCookie(res.cookies);
-        res.dropBody();
-        res.disconnect();
 
         <span class="d_comment">// guest権限で誰でも見れるところを閲覧
-</span>        res = requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/overview"</span>), (<span class="d_keyword">scope</span> req) {
+</span>        requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/overview"</span>), (<span class="d_keyword">scope</span> req) {
             req.headers[<span class="d_string">"Cookie"</span>] = cookies;
+        }, (<span class="d_keyword">scope</span> res) {
+            <span class="d_keyword">assert</span>(res.statusCode == 200, res.toString);
+            <span class="d_keyword">assert</span>(res.contentType == <span class="d_string">"text/plain"</span>);
+            <span class="d_keyword">assert</span>(res.bodyReader.readAllUTF8() == <span class="d_string">"Overview"</span>);
         });
-        <span class="d_keyword">assert</span>(res.statusCode == 200, res.toString);
-        <span class="d_keyword">assert</span>(res.contentType == <span class="d_string">"text/plain"</span>);
-        <span class="d_keyword">assert</span>(res.bodyReader.readAllUTF8() == <span class="d_string">"Overview"</span>);
-        res.dropBody();
-        res.disconnect();
 
         <span class="d_comment">// guest権限でadmin権限でしか見れないところを閲覧
-</span>        res = requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/control_room"</span>), (<span class="d_keyword">scope</span> req) {
+</span>        requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/control_room"</span>), (<span class="d_keyword">scope</span> req) {
             req.headers[<span class="d_string">"Cookie"</span>] = cookies;
+        }, (<span class="d_keyword">scope</span> res) {
+            <span class="d_keyword">assert</span>(res.statusCode == 403, res.toString);
         });
-        <span class="d_keyword">assert</span>(res.statusCode == 403, res.toString);
-        res.dropBody();
-        res.disconnect();
 
         <span class="d_comment">// admin権限のユーザーでログインする
-</span>        res = requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/login"</span>), (<span class="d_keyword">scope</span> req) {
+</span>        requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/login"</span>), (<span class="d_keyword">scope</span> req) {
             req.method = HTTPMethod.POST;
             req.writeFormBody([<span class="d_string">"username"</span>: <span class="d_string">"patchouli"</span>]);
+        }, (<span class="d_keyword">scope</span> res) {
+            <span class="d_keyword">assert</span>(res.statusCode == 302, res.toString);
+            saveCookie(res.cookies);
         });
-        <span class="d_keyword">assert</span>(res.statusCode == 302, res.toString);
-        saveCookie(res.cookies);
-        res.dropBody();
-        res.disconnect();
 
         <span class="d_comment">// admin権限でuser以上なら見れるところを閲覧
-</span>        res = requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/entrance"</span>), (<span class="d_keyword">scope</span> req) {
+</span>        requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/entrance"</span>), (<span class="d_keyword">scope</span> req) {
             req.headers[<span class="d_string">"Cookie"</span>] = cookies;
+        }, (<span class="d_keyword">scope</span> res) {
+            <span class="d_keyword">assert</span>(res.statusCode == 200, res.toString);
+            <span class="d_keyword">assert</span>(res.contentType == <span class="d_string">"text/plain"</span>);
+            <span class="d_keyword">assert</span>(res.bodyReader.readAllUTF8() == <span class="d_string">"Entrance"</span>);
         });
-        <span class="d_keyword">assert</span>(res.statusCode == 200, res.toString);
-        <span class="d_keyword">assert</span>(res.contentType == <span class="d_string">"text/plain"</span>);
-        <span class="d_keyword">assert</span>(res.bodyReader.readAllUTF8() == <span class="d_string">"Entrance"</span>);
-        res.dropBody();
-        res.disconnect();
 
         <span class="d_comment">// admin権限でadmin権限でしか見れないところを閲覧
-</span>        res = requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/control_room"</span>), (<span class="d_keyword">scope</span> req) {
+</span>        requestHTTP(<span class="d_string">"http://"</span>.text(serverAddr, <span class="d_string">"/control_room"</span>), (<span class="d_keyword">scope</span> req) {
             req.headers[<span class="d_string">"Cookie"</span>] = cookies;
+        }, (<span class="d_keyword">scope</span> res) {
+            <span class="d_keyword">assert</span>(res.statusCode == 200, res.toString);
+            <span class="d_keyword">assert</span>(res.contentType == <span class="d_string">"text/plain"</span>);
+            <span class="d_keyword">assert</span>(res.bodyReader.readAllUTF8() == <span class="d_string">"ControlRoom"</span>);
+            saveCookie(res.cookies);
         });
-        <span class="d_keyword">assert</span>(res.statusCode == 200, res.toString);
-        <span class="d_keyword">assert</span>(res.contentType == <span class="d_string">"text/plain"</span>);
-        <span class="d_keyword">assert</span>(res.bodyReader.readAllUTF8() == <span class="d_string">"ControlRoom"</span>);
-        saveCookie(res.cookies);
-        res.dropBody();
-        res.disconnect();
     }
     <span class="d_keyword">catch</span> (Throwable e)
         thrown = e;

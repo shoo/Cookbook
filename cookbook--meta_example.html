@@ -13,7 +13,8 @@
     <body>        
         <div class="container">            
 <div class="sidebar-underbar"></div>
-<div class="sidebar">    <div class="head">        <h2>cookbook</h2>
+<div class="sidebar">    <div class="head">        <a class='githublinkimg' href="https://github.com/dlang-jp/Cookbook"><img src="img/GitHub-Mark-32px.png" width="32" height="32" /></a>
+        <h2>cookbook</h2>
         <p><span class="smallprint"><b>version:</b> ~test <span class="separator"><br></span>
             </span>
         </p>
@@ -35,17 +36,29 @@
 	<li><a href="cookbook--concurrency_example.html"><span >並行処理</span></a></li>
 
 
+
+	<li><a href="cookbook--container_example.html"><span >コンテナ</span></a></li>
+
+
 	
 		<li class="expand-container open"><a class='expand-toggle' href="#"><span >データ形式
 		</span></a><ul><li><a href="
 			cookbook--data.html"><span >overview</span></a></li>
 			
 
+	<li><a href="cookbook--data.base64_example.html"><span >Base64エンコード/デコード</span></a></li>
+
+
+
 	<li><a href="cookbook--data.csv_example.html"><span >CSV操作</span></a></li>
 
 
 
 	<li><a href="cookbook--data.json_example.html"><span >JSON操作</span></a></li>
+
+
+
+	<li><a href="cookbook--data.zip_example.html"><span >ZIP操作</span></a></li>
 
 </ul></li>
 	
@@ -87,6 +100,10 @@
 
 
 
+	<li><a href="cookbook--opovl_excample.html"><span >演算子オーバーロード</span></a></li>
+
+
+
 	<li><a href="cookbook--parallelism_example.html"><span >並列処理</span></a></li>
 
 
@@ -108,6 +125,18 @@
 
 
 	<li><a href="cookbook--string_example.html"><span >文字列</span></a></li>
+
+
+
+	<li><a href="cookbook--sumtype_example.html"><span >SumTypeの例</span></a></li>
+
+
+
+	<li><a href="cookbook--sync_example.html"><span >同期機構/排他処理</span></a></li>
+
+
+
+	<li><a href="cookbook--template_example.html"><span >テンプレート</span></a></li>
 
 
 
@@ -203,6 +232,10 @@
 		<li class="expand-container open"><a class='expand-toggle' href="#"><span >vibed_usage</span></a><ul>
 			
 
+	<li><a href="cookbook-vibe-d_usage--vibed_usage.auth.html"><span >認証・権限</span></a></li>
+
+
+
 	<li><a href="cookbook-vibe-d_usage--vibed_usage.http.html"><span >HTTPサーバー</span></a></li>
 
 
@@ -230,7 +263,11 @@
                 <div class="quickindex" id="quickindex"></div>
                 
                 <h1><div class="ddoc_summary">メタプログラミング
-</div></h1><div class="ddoc_description">メタプログラミングに出てくるイディオム等についてまとめます。</div>
+</div></h1><div class="ddoc_description">メタプログラミングに出てくるイディオム等についてまとめます。
+
+</div>
+<div class="ddoc_section_nonstandard"><span class="ddoc_section_nonstandard_header">Source:</span>
+<span class="link_to_source"><a href="https://github.com/dlang-jp/Cookbook/tree/master/source/meta_example.d">https://github.com/dlang-jp/Cookbook/tree/master/source/meta_example.d</a></span></div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  モジュールの定義一覧を取得する例です。
 <div class="ddoc_blankline"></div>
@@ -320,6 +357,131 @@ D言語のコード片が実際にコンパイルできる場合にはtrueに、
     <span class="d_comment">// S1とS2の足し算はできるか？
 </span>    <span class="d_keyword">auto</span> s3 = s1 + s2; <span class="d_comment">// →できないのでfalse
 </span>}));
+</pre>
+</div>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+ 一度特殊化されたテンプレートの型から、特殊化前のテンプレートと引数を取得する例です。
+<pre class="d_code notranslate"><span class="d_keyword">template</span> MyTemplate(T, U)
+{
+    <span class="d_keyword">alias</span> Key = T;
+    <span class="d_keyword">alias</span> Value = U;
+}
+
+<span class="d_keyword">alias</span> MyT = MyTemplate!(<span class="d_keyword">int</span>, string);
+
+<span class="d_comment">// 特殊化に使ったパラメーターを得るには TemplateArgsOf を利用します
+</span><span class="d_keyword">import</span> std.traits : TemplateArgsOf;
+
+<span class="d_keyword">alias</span> Args = TemplateArgsOf!MyT;
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(Args[0] == <span class="d_keyword">int</span>));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(Args[1] == string));
+
+<span class="d_comment">// 特殊化前のテンプレートそのものを取り出すには TemplateOf を利用します
+</span><span class="d_keyword">import</span> std.traits : TemplateOf;
+
+<span class="d_keyword">alias</span> Temp = TemplateOf!MyT;
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">__traits</span>(isSame, Temp, MyTemplate));
+</pre>
+</div>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+ ある型が、特定のテンプレートを特殊化したものかどうかを判定する例です。
+<pre class="d_code notranslate"><span class="d_keyword">template</span> MyTemplate(T, U)
+{
+    <span class="d_keyword">alias</span> Key = T;
+    <span class="d_keyword">alias</span> Value = U;
+}
+
+<span class="d_keyword">alias</span> MyT1 = MyTemplate!(<span class="d_keyword">int</span>, string);
+<span class="d_keyword">alias</span> MyT2 = MyTemplate!(string, string);
+
+<span class="d_comment">// 判定するには isInstanceOf を利用します
+</span><span class="d_keyword">import</span> std.traits : isInstanceOf;
+
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(isInstanceOf!(MyTemplate, MyT1));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(isInstanceOf!(MyTemplate, MyT2));
+
+<span class="d_comment">// 関係ない型については false を返します
+</span><span class="d_keyword">static</span> <span class="d_keyword">assert</span>(!isInstanceOf!(MyTemplate, <span class="d_keyword">int</span>));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(!isInstanceOf!(MyTemplate, string));
+</pre>
+</div>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+ 関数が右辺値/左辺値で呼ぶことができるか確認する方法
+<pre class="d_code notranslate"><span class="d_keyword">import</span> std.traits: rvalueOf, lvalueOf;
+<span class="d_keyword">void</span> foo(<span class="d_keyword">int</span> a) {}
+<span class="d_keyword">void</span> bar(<span class="d_keyword">ref</span> <span class="d_keyword">int</span> a) {}
+
+<span class="d_comment">// fooは右辺値でも左辺値でも呼べるが
+</span><span class="d_comment">// barは右辺値では呼ぶことができない。
+</span><span class="d_comment">// このような引数の特徴を持つ関数を弁別する際に使う。
+</span><span class="d_keyword">static</span> <span class="d_keyword">assert</span>( <span class="d_keyword">__traits</span>(compiles, foo(rvalueOf!<span class="d_keyword">int</span>)));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>( <span class="d_keyword">__traits</span>(compiles, foo(lvalueOf!<span class="d_keyword">int</span>)));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(!<span class="d_keyword">__traits</span>(compiles, bar(rvalueOf!<span class="d_keyword">int</span>)));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>( <span class="d_keyword">__traits</span>(compiles, bar(lvalueOf!<span class="d_keyword">int</span>)));
+</pre>
+</div>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+ 要素の型を得る
+<div class="ddoc_blankline"></div>
+
+ElementTypeがそれっぽく見えるが、実はForeachTypeのほうが扱いやすい。
+See_Also:
+<ul><li><a href="https://dlang.org/phobos/std_range_primitives.html#ElementType">https://dlang.org/phobos/std_range_primitives.html#ElementType</a></li>
+<li><a href="https://dlang.org/phobos/std_traits.html#ForeachType">https://dlang.org/phobos/std_traits.html#ForeachType</a></li>
+</ul>
+<pre class="d_code notranslate"><span class="d_keyword">import</span> std.range: ElementType;
+<span class="d_keyword">import</span> std.traits: ForeachType;
+
+<span class="d_comment">// 適当にレンジを作成
+</span><span class="d_keyword">struct</span> Range
+{
+    <span class="d_keyword">uint</span>[] ary;
+    <span class="d_keyword">uint</span> front() <span class="d_keyword">const</span> { <span class="d_keyword">return</span> ary[0]; }
+    <span class="d_keyword">void</span> popFront() { ary = ary[1..$]; }
+    <span class="d_keyword">bool</span> empty() <span class="d_keyword">const</span> { <span class="d_keyword">return</span> ary.length == 0; }
+}
+
+<span class="d_comment">// Rangeは同じように扱ってくれる
+</span><span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(ElementType!Range == <span class="d_keyword">uint</span>));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(ForeachType!Range == <span class="d_keyword">uint</span>));
+
+<span class="d_comment">// 配列でも同じように扱ってくれる
+</span><span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(ElementType!(<span class="d_keyword">uint</span>[]) == <span class="d_keyword">uint</span>));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(ForeachType!(<span class="d_keyword">uint</span>[]) == <span class="d_keyword">uint</span>));
+
+<span class="d_comment">// ElementTypeの場合はcharからdcharへの変換が行われてしまうが
+</span><span class="d_comment">// ForeachTypeの場合はcharのまま取り扱ってくれる
+</span><span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(ElementType!(<span class="d_keyword">char</span>[]) == <span class="d_keyword">dchar</span>));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(<span class="d_keyword">is</span>(ForeachType!(<span class="d_keyword">char</span>[]) == <span class="d_keyword">char</span>));
+
+<span class="d_comment">// Foreach over Delegates
+</span><span class="d_comment">// https://dlang.org/spec/statement.html#foreach_over_delegates
+</span><span class="d_comment">// デリゲートではElementTypeはうまく扱ってくれない(void判定されてしまう)
+</span><span class="d_keyword">alias</span> DgRange = <span class="d_keyword">int</span> <span class="d_keyword">delegate</span>(<span class="d_keyword">scope</span> <span class="d_keyword">int</span> <span class="d_keyword">delegate</span>(<span class="d_keyword">ref</span> <span class="d_keyword">uint</span>) dg);
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>(!<span class="d_keyword">is</span>(ElementType!DgRange == <span class="d_keyword">uint</span>));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>( <span class="d_keyword">is</span>(ForeachType!DgRange == <span class="d_keyword">uint</span>));
+
+<span class="d_comment">// opApplyでforeachできる構造体を作成
+</span><span class="d_keyword">struct</span> Iterable
+{
+    <span class="d_keyword">uint</span>[] ary;
+    <span class="d_keyword">int</span> opApply(<span class="d_keyword">scope</span> <span class="d_keyword">int</span> <span class="d_keyword">delegate</span>(<span class="d_keyword">ref</span> <span class="d_keyword">uint</span> a) dg)
+    {
+        <span class="d_keyword">int</span> result = 0;
+        <span class="d_keyword">foreach</span> (item; ary)
+        {
+            result = dg(item);
+            <span class="d_keyword">if</span> (result)
+                <span class="d_keyword">break</span>;
+        }
+        <span class="d_keyword">return</span> result;
+    }
+}
+<span class="d_comment">// ElementTypeではopApplyのある構造体は扱えない
+</span><span class="d_comment">// また、ForeachTypeでも複数opApplyがオーバーロードされている場合は
+</span><span class="d_comment">// コンパイルエラーが発生します。
+</span><span class="d_keyword">static</span> <span class="d_keyword">assert</span>(!<span class="d_keyword">is</span>(ElementType!Iterable == <span class="d_keyword">uint</span>));
+<span class="d_keyword">static</span> <span class="d_keyword">assert</span>( <span class="d_keyword">is</span>(ForeachType!Iterable == <span class="d_keyword">uint</span>));
 </pre>
 </div>
 

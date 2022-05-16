@@ -6,7 +6,7 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/sidebar.js"></script>
         <script type="text/javascript" src="js/listanchors.js"></script>
-        <title>windows.basic</title>
+        <title>template_example</title>
         
         
     </head>
@@ -262,72 +262,124 @@
             <div class="content">                
                 <div class="quickindex" id="quickindex"></div>
                 
-                <h1><div class="ddoc_summary">Win32API
-</div></h1><div class="ddoc_description">Windowsにおける標準API(Win32API)の呼び出しについてまとめます。
-<div class="ddoc_blankline"></div>
-
-概要
-<ol><li>C言語では多くの場合 <span class="d_inlinecode donthyphenate notranslate">#include &lt;windows.h&gt;</span> と記述しますが、Dでは <span class="d_inlinecode donthyphenate notranslate">import core.sys.windows.windows;</span> と記述します。</li>
-<li>あとは利用する関数が含まれるlibファイルをリンクすればシステム関数が利用できます。
-<ul><li>dubでは設定ファイルの <span class="d_inlinecode donthyphenate notranslate">libs</span> セクションにファイル名を拡張子を除いて書きます。</li>
-<li><span class="d_inlinecode donthyphenate notranslate">pragma(lib, "ファイル名");</span> とする書き方もあります
+                <h1><div class="ddoc_summary">テンプレート
+</div></h1><div class="ddoc_description">テンプレートについてまとめます。
+<ul><li>テンプレート</li>
+<li>テンプレート関数</li>
+<li>テンプレートクラス・構造体</li>
+<li>mixinテンプレート(TODO)</li>
+<li>enum, aliasのテンプレート(TODO)
 </li>
-</ul></li>
-</ol>
-なおライブラリ等でWindows以外のプラットフォームと共用するためには <span class="d_inlinecode donthyphenate notranslate">version (Windows) { } else { }</span> で別々に書きます。<br>
-以下の例ではLinux等の環境でもビルドできるようにするためversionで囲って表記しています。
-
+</ul>
 </div>
 <div class="ddoc_see_also"><span class="ddoc_see_also_header">See Also:</span>
- 関数に対応するヘッダーとlibファイルはMicrosoft Docsのサイトから検索して見つけることができます。<br>
-    <a href="https://docs.microsoft.com/en-us/windows/win32/api/_winmsg/">https://docs.microsoft.com/en-us/windows/win32/api/_winmsg/</a>
-
+ 
+<ul><li><a href="https://dlang.org/spec/template.html">https://dlang.org/spec/template.html</a>
+</li>
+</ul>
 </div>
 <div class="ddoc_section_nonstandard"><span class="ddoc_section_nonstandard_header">Source:</span>
-<span class="link_to_source"><a href="https://github.com/dlang-jp/Cookbook/tree/master/windows/source/windows/basic.d">https://github.com/dlang-jp/Cookbook/tree/master/windows/source/windows/basic.d</a></span></div>
+<span class="link_to_source"><a href="https://github.com/dlang-jp/Cookbook/tree/master/source/template_example.d">https://github.com/dlang-jp/Cookbook/tree/master/source/template_example.d</a></span></div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
- <span class="d_inlinecode donthyphenate notranslate">GetSystemMetrics</span>関数を使ってシステム情報（マウスのボタン数）を取得する例です。
-<pre class="d_code notranslate"><span class="d_keyword">version</span> (Windows)
+ テンプレートの例です
+<pre class="d_code notranslate"><span class="d_comment">// テンプレートの中には構造体やクラス、関数、定数などが定義できます。
+</span><span class="d_keyword">template</span> Data(T)
 {
-    <span class="d_keyword">import</span> core.sys.windows.windows;
-
-    <span class="d_keyword">auto</span> n = GetSystemMetrics(SM_CMOUSEBUTTONS);
-    <span class="d_keyword">assert</span>(n &gt;= 0);
+    <span class="d_keyword">struct</span> X
+    {
+        T data;
+    }
+    <span class="d_keyword">void</span> copy(X src, <span class="d_keyword">ref</span> X dst)
+    {
+        dst.data = src.data;
+    }
 }
+<span class="d_comment">// Data!intで、Tをintに特殊化します。
+</span><span class="d_comment">// 特殊化されたテンプレートは一種の名前空間として利用されます。
+</span>Data!<span class="d_keyword">int</span>.X x;
+Data!<span class="d_keyword">int</span>.X y;
+x.data = 10;
+Data!<span class="d_keyword">int</span>.copy(x, y);
+<span class="d_keyword">assert</span>(y.data == 10);
 </pre>
 </div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
- GetComputerNameEx関数を使ってコンピューター名を取得する例です。
+ テンプレート関数の例です
 <div class="ddoc_blankline"></div>
 
-Windowsのシステム関数には末尾にAかWが付くものがあり、それぞれchar向けかwchar向けを表します。
-<div class="ddoc_blankline"></div>
+テンプレートを使った関数の定義・使い方の例です。
+構文糖によって通常のテンプレートを使うよりも見やすく、書きやすく使用することができます。
+<pre class="d_code notranslate"><span class="d_keyword">import</span> std.math: isClose;
 
-Aが付く関数はシステムロケールに従って結果を返すため、多くはASCII文字列ですが日本語環境ではShift_JISになることがあります。<br>
-Wが付く関数はUnicodeで結果を返すため、そのままwcharの文字列として扱うことができます。
-<pre class="d_code notranslate"><span class="d_keyword">version</span> (Windows)
+<span class="d_comment">// +演算子で計算できるならどんな型でも対応可能なadd関数
+</span>T add(T)(T a, T b)
 {
-    <span class="d_keyword">import</span> core.sys.windows.windows;
-
-    <span class="d_comment">// 適当な長さのバッファを確保しておきます。
-</span>    DWORD length = 256;
-    <span class="d_keyword">wchar</span>[256] buf;
-
-    BOOL ret = GetComputerNameExW(COMPUTER_NAME_FORMAT.ComputerNamePhysicalNetBIOS,
-            buf.ptr, &amp;length);
-
-    <span class="d_keyword">assert</span>(ret != 0);
-    <span class="d_keyword">assert</span>(0 &lt; length &amp;&amp; length &lt;= 256);
-
-    <span class="d_comment">// 結果をスライスで取り出すことでwchar[]の文字列として利用できます。
-</span>    <span class="d_keyword">wchar</span>[] computerName = buf[0 .. length];
-
-    <span class="d_comment">// wchar[]で確保したものはstd.convのtoでstringに変換することができます。
-</span>    <span class="d_keyword">import</span> std.conv : to;
-
-    string strComputerName = computerName.to!string();
-    <span class="d_keyword">assert</span>(0 &lt; strComputerName.length &amp;&amp; strComputerName.length &lt;= 256);
+    <span class="d_keyword">return</span> a + b;
 }
+
+<span class="d_keyword">int</span> x = 10;
+<span class="d_keyword">int</span> y = 20;
+<span class="d_comment">// add関数のTをint型に特殊化して使用する。
+</span><span class="d_keyword">assert</span>(add!<span class="d_keyword">int</span>(x, y) == 30);
+<span class="d_comment">// `add!int(x, y)`` と書いてもよいが、
+</span><span class="d_comment">// add関数は T = int を推論してくれるので、`!int`の部分は不要。
+</span><span class="d_keyword">assert</span>(add(x, y) == 30);
+
+<span class="d_keyword">double</span> t = 3.14;
+<span class="d_keyword">double</span> u = 0.001592;
+<span class="d_comment">// add関数をdouble型のために使用する。
+</span><span class="d_keyword">assert</span>(add(t, u).isClose(3.141592, 0.0000001, 0.0000001));
+</pre>
+</div>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+ ditto
+<pre class="d_code notranslate"><span class="d_comment">// 前述のadd関数は以下の構文糖となっています
+</span><span class="d_keyword">template</span> add(T)
+{
+    T add(T a, T b)
+    {
+        <span class="d_keyword">return</span> a + b;
+    }
+}
+<span class="d_keyword">int</span> x = 10;
+<span class="d_keyword">int</span> y = 20;
+<span class="d_comment">// テンプレートと同名のメンバーがある場合は、
+</span><span class="d_comment">// 以下のようなアクセスができなくなります
+</span><span class="d_comment">//assert(add!(int).add(x, y) == 30);
+</span>
+<span class="d_comment">// 以下3つはすべて同じ意味で、構文糖によって
+</span><span class="d_comment">// 簡略化された書き方ができます
+</span><span class="d_keyword">assert</span>(add!(<span class="d_keyword">int</span>)(x, y) == 30);
+<span class="d_keyword">assert</span>(add!<span class="d_keyword">int</span>(x, y) == 30);
+<span class="d_keyword">assert</span>(add(x, y) == 30);
+</pre>
+</div>
+<div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
+ テンプレートクラス・構造体の例です
+<pre class="d_code notranslate"><span class="d_comment">// テンプレート構造体
+</span><span class="d_keyword">struct</span> Point(T)
+{
+    T x;
+    T y;
+    Point!T add(Point!T pt)
+    {
+        <span class="d_keyword">return</span> Point(x + pt.x, y + pt.y);
+    }
+}
+<span class="d_comment">// Point!intでint型に特殊化
+</span><span class="d_comment">// 関数と違い、 Point(10, 20) 等として推論はできないので注意。
+</span>Point!<span class="d_keyword">int</span> p = Point!<span class="d_keyword">int</span>(10, 20);
+Point!<span class="d_keyword">int</span> t = Point!<span class="d_keyword">int</span>(30, 40);
+Point!<span class="d_keyword">int</span> v = p.add(t);
+<span class="d_keyword">assert</span>(v.x == 40);
+<span class="d_keyword">assert</span>(v.y == 60);
+
+<span class="d_comment">// floatで特殊化する場合はこう
+</span>Point!<span class="d_keyword">float</span> r;
+Point!<span class="d_keyword">float</span> s;
+
+<span class="d_comment">// クラスならこう
+</span><span class="d_keyword">class</span> Vector(T){}
 </pre>
 </div>
 

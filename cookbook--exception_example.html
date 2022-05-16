@@ -13,7 +13,8 @@
     <body>        
         <div class="container">            
 <div class="sidebar-underbar"></div>
-<div class="sidebar">    <div class="head">        <h2>cookbook</h2>
+<div class="sidebar">    <div class="head">        <a class='githublinkimg' href="https://github.com/dlang-jp/Cookbook"><img src="img/GitHub-Mark-32px.png" width="32" height="32" /></a>
+        <h2>cookbook</h2>
         <p><span class="smallprint"><b>version:</b> ~test <span class="separator"><br></span>
             </span>
         </p>
@@ -35,17 +36,29 @@
 	<li><a href="cookbook--concurrency_example.html"><span >並行処理</span></a></li>
 
 
+
+	<li><a href="cookbook--container_example.html"><span >コンテナ</span></a></li>
+
+
 	
 		<li class="expand-container open"><a class='expand-toggle' href="#"><span >データ形式
 		</span></a><ul><li><a href="
 			cookbook--data.html"><span >overview</span></a></li>
 			
 
+	<li><a href="cookbook--data.base64_example.html"><span >Base64エンコード/デコード</span></a></li>
+
+
+
 	<li><a href="cookbook--data.csv_example.html"><span >CSV操作</span></a></li>
 
 
 
 	<li><a href="cookbook--data.json_example.html"><span >JSON操作</span></a></li>
+
+
+
+	<li><a href="cookbook--data.zip_example.html"><span >ZIP操作</span></a></li>
 
 </ul></li>
 	
@@ -87,6 +100,10 @@
 
 
 
+	<li><a href="cookbook--opovl_excample.html"><span >演算子オーバーロード</span></a></li>
+
+
+
 	<li><a href="cookbook--parallelism_example.html"><span >並列処理</span></a></li>
 
 
@@ -108,6 +125,18 @@
 
 
 	<li><a href="cookbook--string_example.html"><span >文字列</span></a></li>
+
+
+
+	<li><a href="cookbook--sumtype_example.html"><span >SumTypeの例</span></a></li>
+
+
+
+	<li><a href="cookbook--sync_example.html"><span >同期機構/排他処理</span></a></li>
+
+
+
+	<li><a href="cookbook--template_example.html"><span >テンプレート</span></a></li>
 
 
 
@@ -203,6 +232,10 @@
 		<li class="expand-container open"><a class='expand-toggle' href="#"><span >vibed_usage</span></a><ul>
 			
 
+	<li><a href="cookbook-vibe-d_usage--vibed_usage.auth.html"><span >認証・権限</span></a></li>
+
+
+
 	<li><a href="cookbook-vibe-d_usage--vibed_usage.http.html"><span >HTTPサーバー</span></a></li>
 
 
@@ -234,7 +267,11 @@
 ここでいう例外は、発生したら関数が最後まで終わるのを待たずに強制終了して、
 例外を捕まえるまで関数呼び出し元をたどっていってスタックをロールバックして…
 といった、いわゆる大域ジャンプを伴う、プログラムの特殊なフローのことです。
-ここでは例外の使い方についてまとめます。</div>
+ここでは例外の使い方についてまとめます。
+
+</div>
+<div class="ddoc_section_nonstandard"><span class="ddoc_section_nonstandard_header">Source:</span>
+<span class="link_to_source"><a href="https://github.com/dlang-jp/Cookbook/tree/master/source/exception_example.d">https://github.com/dlang-jp/Cookbook/tree/master/source/exception_example.d</a></span></div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  <h1>従来の方法とその欠点</h1>
 
@@ -662,29 +699,226 @@ string createBuf(string x) @trusted
 </pre>
 </div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
- <h1>try-catch-finary</h1>
-<pre class="d_code notranslate"><span class="d_comment">// todo
-</span></pre>
+ <h1>try-catch-finally</h1>
+Java等と同じように、finallyブロックが利用できます。
+しかし、D言語ではメジャーな機能ではありません。これと同等のことを行いたい場合は<span class="d_inlinecode donthyphenate notranslate">scope (exit)</span>を使用することが多いです。
+<pre class="d_code notranslate"><span class="d_keyword">import</span> core.stdc.stdlib: malloc, free;
+<span class="d_keyword">import</span> std.algorithm, std.range;
+<span class="d_comment">// try-catchの例と違ってGCで管理しない＝解放が必要なメモリを確保します
+</span><span class="d_comment">// 割り当てが発生したら、解放が必要です。
+</span><span class="d_keyword">void</span>* buf;
+string createBuf(string x) @trusted
+{
+    <span class="d_keyword">import</span> core.exception;
+    <span class="d_keyword">import</span> std.conv, std.exception;
+    <span class="d_keyword">try</span>
+    {
+        <span class="d_keyword">auto</span> y = to!<span class="d_keyword">ulong</span>(x);
+        <span class="d_keyword">if</span> (y == 0)
+            <span class="d_keyword">throw</span> <span class="d_keyword">new</span> Exception(<span class="d_string">"Invalid number"</span>);
+        enforce!InvalidMemoryOperationError(y &lt;= 0xffffffffUL, <span class="d_string">"Cannot allocate memory"</span>);
+        buf = malloc(<span class="d_keyword">cast</span>(size_t)y);
+        <span class="d_keyword">return</span> <span class="d_string">"Converted!"</span>;
+    }
+    <span class="d_keyword">catch</span> (ConvException e)
+        <span class="d_keyword">return</span> <span class="d_string">"Cannot convert"</span>;
+    <span class="d_keyword">catch</span> (Exception e)
+        <span class="d_keyword">return</span> <span class="d_string">"Unknown Exception["</span> ~ e.msg ~ <span class="d_string">"]"</span>;
+    <span class="d_keyword">catch</span> (Throwable e)
+        <span class="d_keyword">return</span> <span class="d_string">"Fatal Error"</span>;
+    <span class="d_keyword">finally</span>
+    {
+        free(buf);
+        buf = <span class="d_keyword">null</span>;
+    }
+}
+<span class="d_comment">// どんな呼び出しでも、確実に解放されている
+</span><span class="d_keyword">assert</span>(createBuf(<span class="d_string">"1"</span>) == <span class="d_string">"Converted!"</span>);
+<span class="d_keyword">assert</span>(buf <span class="d_keyword">is</span> <span class="d_keyword">null</span>);
+<span class="d_keyword">assert</span>(createBuf(<span class="d_string">"0.1"</span>) == <span class="d_string">"Cannot convert"</span>);
+<span class="d_keyword">assert</span>(buf <span class="d_keyword">is</span> <span class="d_keyword">null</span>);
+<span class="d_keyword">assert</span>(createBuf(<span class="d_string">"0"</span>) == <span class="d_string">"Unknown Exception[Invalid number]"</span>);
+<span class="d_keyword">assert</span>(buf <span class="d_keyword">is</span> <span class="d_keyword">null</span>);
+<span class="d_keyword">assert</span>(createBuf(<span class="d_string">"274877906943"</span>) == <span class="d_string">"Fatal Error"</span>);
+<span class="d_keyword">assert</span>(buf <span class="d_keyword">is</span> <span class="d_keyword">null</span>);
+</pre>
 </div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
- <h1>scope (success) / scope (failure) / scope (exit)</h1>
-<pre class="d_code notranslate"><span class="d_comment">// todo
-</span></pre>
+ <h1>スコープガード文： <span class="d_inlinecode donthyphenate notranslate">scope (success)</span> / <span class="d_inlinecode donthyphenate notranslate">scope (failure)</span> / <span class="d_inlinecode donthyphenate notranslate">scope (exit)</span></h1>
+スコープガード文です。try-catch-finallyの代わりに利用できます。
+それぞれ以下の文が利用できます。
+<ul><li><span class="d_inlinecode donthyphenate notranslate">scope (success)</span>は成功した(例外が発生しなかった)ときだけ実行されるブロックです</li>
+<li><span class="d_inlinecode donthyphenate notranslate">scope (failure)</span>は失敗した(例外が発生した)ときだけ実行されるブロックです</li>
+<li><span class="d_inlinecode donthyphenate notranslate">scope (exit)</span>は成否にかかわらず(例外が発生有無にかかわらず)必ず_実行されるブロックです
+</li>
+</ul>
+特に <span class="d_inlinecode donthyphenate notranslate">scope (exit)</span> は、リソースの確保と解放のコードを近くに記載することができるのが便利です。
+<pre class="d_code notranslate"><span class="d_keyword">import</span> core.stdc.stdlib: malloc, free, realloc;
+<span class="d_keyword">import</span> std.algorithm, std.range;
+<span class="d_comment">// try-catchの例と違ってGCで管理しない＝解放が必要なメモリを確保します
+</span><span class="d_comment">// 割り当てが発生したら、解放が必要です。
+</span><span class="d_keyword">void</span>* buf;
+string createBuf(string x) @trusted
+{
+    string msg;
+    <span class="d_keyword">import</span> core.exception;
+    <span class="d_keyword">import</span> std.conv, std.exception;
+    <span class="d_keyword">try</span>
+    {
+        <span class="d_comment">// scope文は、後に記述されたものから逆順で実行されます
+</span>        <span class="d_comment">// わかりやすいように実行順に番号を振ります
+</span>        <span class="d_keyword">scope</span> (exit)
+            buf = <span class="d_keyword">null</span>;
+        <span class="d_comment">// 割り当ての直後にscope (exit)を記載することで、
+</span>        <span class="d_comment">// 解放を忘れることなく安全に終了することができます
+</span>        buf = malloc(100).enforce!InvalidMemoryOperationError(<span class="d_string">"Cannot allocate memory"</span>);
+        <span class="d_keyword">scope</span> (exit)
+            free(buf);
+        <span class="d_comment">// 例外なく終了した場合
+</span>        <span class="d_keyword">scope</span> (success)
+            msg = <span class="d_string">"Converted!"</span>;
+        <span class="d_comment">// 途中で例外が発生した場合
+</span>        <span class="d_keyword">scope</span> (failure)
+            msg = <span class="d_string">"Failed..."</span>;
+        <span class="d_keyword">auto</span> y = to!<span class="d_keyword">ulong</span>(x);
+        <span class="d_keyword">if</span> (y == 0)
+            <span class="d_keyword">throw</span> <span class="d_keyword">new</span> Exception(<span class="d_string">"Invalid number"</span>);
+        enforce!InvalidMemoryOperationError(y &lt;= 0xffffffffUL, <span class="d_string">"Cannot allocate memory"</span>);
+        buf = realloc(buf, <span class="d_keyword">cast</span>(size_t)y).enforce!InvalidMemoryOperationError(<span class="d_string">"Cannot allocate memory"</span>);
+    }
+    <span class="d_keyword">catch</span> (ConvException e)
+        msg ~= <span class="d_string">" Cannot convert"</span>;
+    <span class="d_keyword">catch</span> (Exception e)
+        msg ~= <span class="d_string">" Unknown Exception["</span> ~ e.msg ~ <span class="d_string">"]"</span>;
+    <span class="d_keyword">catch</span> (Throwable e)
+        msg ~= <span class="d_string">" Fatal Error"</span>;
+    <span class="d_keyword">return</span> msg;
+}
+<span class="d_comment">// スコープガード文によってどんな呼び出しでも、確実に解放されています。
+</span><span class="d_comment">// また、例外が発生しない場合は`"Converted!"`が、
+</span><span class="d_comment">// そうでない場合は`msg`の先頭に`"Failed..."`がつきます
+</span><span class="d_keyword">assert</span>(createBuf(<span class="d_string">"1"</span>) == <span class="d_string">"Converted!"</span>);
+<span class="d_keyword">assert</span>(buf <span class="d_keyword">is</span> <span class="d_keyword">null</span>);
+<span class="d_keyword">assert</span>(createBuf(<span class="d_string">"0.1"</span>) == <span class="d_string">"Failed... Cannot convert"</span>);
+<span class="d_keyword">assert</span>(buf <span class="d_keyword">is</span> <span class="d_keyword">null</span>);
+<span class="d_keyword">assert</span>(createBuf(<span class="d_string">"0"</span>) == <span class="d_string">"Failed... Unknown Exception[Invalid number]"</span>);
+<span class="d_keyword">assert</span>(buf <span class="d_keyword">is</span> <span class="d_keyword">null</span>);
+<span class="d_keyword">assert</span>(createBuf(<span class="d_string">"274877906943"</span>) == <span class="d_string">"Failed... Fatal Error"</span>);
+<span class="d_keyword">assert</span>(buf <span class="d_keyword">is</span> <span class="d_keyword">null</span>);
+</pre>
 </div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  <h1>例外とエラー</h1>
-<pre class="d_code notranslate"><span class="d_comment">// todo
-</span></pre>
+D言語では、修復可能な問題を例外と呼び、ExceptionやExceptionを継承したクラスのオブジェクトをthrowすることによって発生させます。
+一方で、修復不可能な問題の場合はエラーといって、ErrorやErrorを継承したクラスのオブジェクトをthrowします。
+基本的にはErrorは修復不可能であるため、catchする必要はありません。
+ExceptionもErrorもThrowableというインターフェースを継承しているので、ExceptionもErrorもcatchしたいという場合はThrowableをcatchすることができます(が、推奨されません)。
+<div class="ddoc_blankline"></div>
+
+なお、safeコードの中では、ErrorやThrowableをcatchすることはできません。
+<pre class="d_code notranslate"><span class="d_keyword">void</span> someErr() { <span class="d_keyword">throw</span> <span class="d_keyword">new</span> Error(<span class="d_string">"Error"</span>); }
+<span class="d_keyword">void</span> someEx() { <span class="d_keyword">throw</span> <span class="d_keyword">new</span> Exception(<span class="d_string">"Exception"</span>); }
+
+<span class="d_keyword">bool</span> thrown = <span class="d_keyword">false</span>;
+
+<span class="d_comment">// 例外を投げる場合
+</span><span class="d_keyword">try</span>
+    someEx();
+<span class="d_keyword">catch</span> (Exception e)
+    thrown = <span class="d_keyword">true</span>;
+<span class="d_keyword">catch</span> (Error e)
+    <span class="d_keyword">assert</span>(0);
+
+<span class="d_keyword">assert</span>(thrown);
+thrown = <span class="d_keyword">false</span>;
+
+<span class="d_comment">// エラーを投げる場合
+</span><span class="d_keyword">try</span>
+    someErr();
+<span class="d_keyword">catch</span> (Exception e)
+    <span class="d_keyword">assert</span>(0);
+<span class="d_keyword">catch</span> (Error e)
+    thrown = <span class="d_keyword">true</span>;
+
+<span class="d_keyword">assert</span>(thrown);
+thrown = <span class="d_keyword">false</span>;
+
+<span class="d_comment">// Throwableをcatchすればどちらでも捕捉できる
+</span><span class="d_keyword">try</span>
+    someEx();
+<span class="d_keyword">catch</span> (Throwable e)
+    thrown = <span class="d_keyword">true</span>;
+
+<span class="d_keyword">assert</span>(thrown);
+thrown = <span class="d_keyword">false</span>;
+</pre>
 </div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  <h1>nothrow</h1>
-<pre class="d_code notranslate"><span class="d_comment">// todo
-</span></pre>
+例外を投げない関数はnothrowをつけることができます。
+ただし、nothrowとついていても、Errorは投げることができるので注意が必要です。
+<pre class="d_code notranslate"><span class="d_keyword">import</span> std.exception: assertThrown;
+<span class="d_keyword">void</span> someErr() { <span class="d_keyword">throw</span> <span class="d_keyword">new</span> Error(<span class="d_string">"Error"</span>); }
+<span class="d_keyword">void</span> someEx() { <span class="d_keyword">throw</span> <span class="d_keyword">new</span> Exception(<span class="d_string">"Exception"</span>); }
+<span class="d_keyword">bool</span> thrown = <span class="d_keyword">false</span>;
+
+<span class="d_keyword">void</span> foo() <span class="d_keyword">nothrow</span>
+{
+    <span class="d_comment">// nothrow内では、例外を投げる可能性のある関数を呼ぶ場合はtry-catchして、
+</span>    <span class="d_comment">// すべての例外に対処する必要があります。
+</span>    <span class="d_keyword">static</span> <span class="d_keyword">assert</span>(!<span class="d_keyword">__traits</span>(compiles, someEx()));
+    <span class="d_keyword">try</span>
+        someEx();
+    <span class="d_keyword">catch</span> (Exception e)
+        thrown = <span class="d_keyword">true</span>;
+    <span class="d_keyword">assert</span>(thrown);
+    thrown = <span class="d_keyword">false</span>;
+}
+foo();
+
+<span class="d_keyword">void</span> bar() <span class="d_keyword">nothrow</span>
+{
+    <span class="d_comment">// nothrow内では、エラーなら投げられる
+</span>    someErr();
+}
+assertThrown!Error(bar());
+</pre>
 </div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  <h1>例外の自作</h1>
-<pre class="d_code notranslate"><span class="d_comment">// todo
-</span></pre>
+例外クラスはExceptionを継承したクラスを自分で定義することができます。
+<div class="ddoc_blankline"></div>
+
+See_Also:
+<ul><li><a href="https://dlang.org/phobos/std_exception.html#basicExceptionCtors">https://dlang.org/phobos/std_exception.html#basicExceptionCtors</a></li>
+</ul>
+<pre class="d_code notranslate"><span class="d_comment">// Exceptionを継承したTestExceptionを定義
+</span><span class="d_keyword">class</span> TestException: Exception
+{
+    <span class="d_comment">/+
+    // コンストラクタでメッセージ、ファイル名、行数を渡せるようにします
+    this(string msg, string file = __FILE__, size_t line = __LINE__)
+    {
+        super(msg, file, line);
+    }
+    +/</span>
+    <span class="d_comment">// 上記のようなコンストラクタを毎回書くのは面倒なので、
+</span>    <span class="d_comment">// 以下のような便利テンプレートがあります。
+</span>    <span class="d_keyword">import</span> std.exception: basicExceptionCtors;
+    <span class="d_comment">///
+</span>    <span class="d_keyword">mixin</span> basicExceptionCtors;
+}
+
+<span class="d_keyword">void</span> someEx() { <span class="d_keyword">throw</span> <span class="d_keyword">new</span> TestException(<span class="d_string">"TestException"</span>); }
+<span class="d_keyword">bool</span> thrown = <span class="d_keyword">false</span>;
+
+<span class="d_comment">// TestExceptionが発生したときだけに対処することができます。
+</span><span class="d_keyword">try</span>
+    someEx();
+<span class="d_keyword">catch</span> (TestException e)
+    thrown = <span class="d_keyword">true</span>;
+<span class="d_keyword">assert</span>(thrown);
+</pre>
 </div>
 <div class="ddoc_examples"><span class="ddoc_examples_header">Examples:</span>
  <h1>std.exception.enforce</h1>

@@ -1,0 +1,20 @@
+[
+ {
+  "name" : "openssl_usage.example",
+  "kind" : "module",
+  "file" : "/home/runner/work/Cookbook/Cookbook/thirdparty/openssl/source/openssl_usage/example.d",
+  "comment" : "OpenSSLの使用例\n\nOpenSSLはベースがCの暗号化ライブラリです。インターフェースもそのままC言語のAPIを利用します。 $(BR)\n[Deimos](https://github.com/D-Programming-Deimos)という公式のC言語のバインディングプロジェクトがあり、OpenSSLもその対象になっています。\n\nOpenSSLのライセンスはバージョン3.0.0未満の場合、OpenSSL LicenseとSSLeay Licenseの両方のライセンス下で公開されています。3.0.0以降の場合はApache License Version 2.0のライセンスです。$(BR)\nここで紹介するDeimos版の対応バージョンは現在3.0.0未満ですので、OpenSSL LicenseとSSLeay Licenseということになります。\n\n## ドキュメント\n    - 公式サイト: https://www.openssl.org\n    - APIドキュメント: https://www.openssl.org/docs/man1.1.1/man7/\n    - リポジトリ(Deimos): https://github.com/D-Programming-Deimos/openssl\n    - dubパッケージ(Deimos): https://code.dlang.org/packages/openssl\n\nSource: $(LINK_TO_SRC thirdparty/openssl/source/openssl_usage/_example.d)\n",
+  "members" : [
+   {
+    "name" : "__unittest_L29_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "AES-128-CBCによる共通鍵暗号化/復号の例です。\n\nSee_Also:\n    - https://www.openssl.org/docs/man1.1.1/man3/EVP_CIPHER_CTX_new.html\n    - https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57Pt3r1.pdf P13\n    - https://www.ipa.go.jp/security/ipg/documents/ipa-cryptrec-gl-3001-3.0.1.pdf P26, P37\n",
+    "line" : 29,
+    "char" : 1,
+    "endline" : 109,
+    "endchar" : 1
+   }
+  ]
+ }
+]

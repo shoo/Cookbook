@@ -325,59 +325,59 @@
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 76,
+    "endline" : 86,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L76_C7",
+    "name" : "__unittest_L86_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "# 真偽値・null⇔JSON\n\n真偽値(true / false)とnullの状態は、上記文字列や数値とは異なり、\nそれぞれ個別にJSONTypeが存在します。\n",
-    "line" : 76,
+    "line" : 86,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 113,
+    "endline" : 123,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L113_C7",
+    "name" : "__unittest_L123_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "# 配列⇔JSON\n",
-    "line" : 113,
+    "line" : 123,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 155,
+    "endline" : 165,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L155_C7",
+    "name" : "__unittest_L165_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "# 連想配列⇔JSON\n",
-    "line" : 155,
+    "line" : 165,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 216,
+    "endline" : 226,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L216_C7",
+    "name" : "__unittest_L226_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "# JSONファイルの書き込み・読み込み\n",
-    "line" : 216,
+    "line" : 226,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 259,
+    "endline" : 269,
     "endchar" : 1
    }
   ]
@@ -423,159 +423,211 @@
   "comment" : "時刻・日付\n\n時刻・日付の操作についてまとめます。\n\nSource: $(LINK_TO_SRC source/_datetime_example.d)\n",
   "members" : [
    {
-    "name" : "__unittest_L15_C7",
+    "name" : "__unittest_L17_C7",
     "kind" : "function",
     "protection" : "public",
-    "comment" : "# 時間を表す7つの型\n\n以下の説明では、「時刻」「時間」「期間」を明確に使い分けます。\n",
-    "line" : 15,
+    "comment" : "# 時間を表す7つの型\n\nDには日時に関する型が複数定義されており、その性質によって役割が異なります。\n\n以下の説明では、「システムタイム(日時)」「日時」「日付」「時刻」「時間」「モノトニックタイム(時間)」「期間」を明確に使い分けます。\n",
+    "line" : 17,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 29,
+    "endline" : 31,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L29_C7",
+    "name" : "__unittest_L31_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "\n## 1. 「時間」 $(D Duration)\nDurationは「時間」を表す型です。\nここでの「時間」とは、10秒間とか、3時間、のような、時間的な長さを表す表現です。\n各種単位の「時間」を得るには、hours関数や、seconds関数のようなものを core.time からimportして使います。\n",
-    "line" : 29,
+    "line" : 31,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 50,
+    "endline" : 52,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L50_C7",
+    "name" : "__unittest_L52_C7",
     "kind" : "function",
     "protection" : "public",
-    "comment" : "## 2. 「時刻」 $(D SysTime)\n\nSysTimeは「時刻」を表す型です。\n現在時刻を取得するには、 std.datetime でimportできるClockのメソッドを使用します。\n",
-    "line" : 50,
+    "comment" : "## 2. 「システムタイム(日時)」 $(D SysTime)\n\nSysTimeは「時差を考慮した日時」を表す型です。\n現在日時を取得するには、 std.datetime でimportできるClockのメソッドを使用します。\n",
+    "line" : 52,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 68,
+    "endline" : 71,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L68_C7",
+    "name" : "__unittest_L71_C7",
     "kind" : "function",
     "protection" : "public",
-    "comment" : "## 3. 「時刻」 $(D DateTime)\n\nDateTimeは「時刻」を表す型です。\nただし、SysTimeとは内部表現が違います。\nSysTimeは時差を考慮しますが、DateTimeは考慮せず、ただ\n何年何月何日の何時何分何秒という情報だけを持っています。\nミリ秒以下の情報も持ちません。\n",
-    "line" : 68,
+    "comment" : "## 3. 「日時」 $(D DateTime)\n\nDateTimeは「時差を考慮しない日時」を表す型です。\nSysTimeは時差を考慮しますが、DateTimeは考慮せず、ただ\n何年何月何日の何時何分何秒という情報だけを持っています。\nミリ秒以下の情報も持ちません。\n",
+    "line" : 71,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 87,
+    "endline" : 90,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L87_C7",
+    "name" : "__unittest_L90_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "## 4. 「日付」 $(D Date)\n\nDateは、DateTimeのうち、何年何月何日(つまり日付)の部分です。\n",
-    "line" : 87,
+    "line" : 90,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 122,
+    "endline" : 125,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L122_C7",
+    "name" : "__unittest_L125_C7",
     "kind" : "function",
     "protection" : "public",
-    "comment" : "## 5. $(D TimeOfDay)\n\nTimeOfDayは、DateTimeのうち、「何時何分何秒」の部分です。\n",
-    "line" : 122,
+    "comment" : "## 5. 「時刻」$(D TimeOfDay)\n\nTimeOfDayは、DateTimeのうち、「何時何分何秒」の部分です。\n",
+    "line" : 125,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 136,
+    "endline" : 139,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L136_C7",
+    "name" : "__unittest_L139_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "## 6. 「期間」 $(D Interval)\n\n2つの「時刻」の間の時間を「期間」とすることができます。\n",
-    "line" : 136,
+    "line" : 139,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 153,
+    "endline" : 156,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L153_C7",
+    "name" : "__unittest_L156_C7",
     "kind" : "function",
     "protection" : "public",
-    "comment" : "## 7. 「時間」 $(D MonoTime)\n\n2つ目の「時間」 MonoTime は、ベンチマークやゲームのFPSの計算などで使用される、\n高精度な時間単位を扱います。\nまた、NTPによる巻き戻しがおこらず、単調増加(monotonic)であることが特徴です。\n「時間」を測定するストップウォッチで得られます。\n",
-    "line" : 153,
+    "comment" : "## 7. 「モノトニックタイム(時間)」 $(D MonoTime)\n\n2つ目の「時間」 MonoTime は、ベンチマークやゲームのFPSの計算などで使用される、\n高精度な時間単位を扱います。\nまた、NTPによる巻き戻しがおこらず、単調増加(monotonic)であることが特徴です。\n「時間」を測定するストップウォッチで得られます。\n",
+    "line" : 156,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 173,
+    "endline" : 176,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L173_C7",
+    "name" : "__unittest_L176_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "# SysTimeと文字列の変換\n",
-    "line" : 173,
+    "line" : 176,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 216,
+    "endline" : 219,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L216_C7",
+    "name" : "__unittest_L219_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "# Durationの使い方\n",
-    "line" : 216,
+    "line" : 219,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 244,
+    "endline" : 247,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L244_C7",
+    "name" : "__unittest_L247_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "# StopWatchの使い方\n",
-    "line" : 244,
+    "line" : 247,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 300,
+    "endline" : 303,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L300_C7",
+    "name" : "__unittest_L303_C7",
     "kind" : "function",
     "protection" : "public",
     "comment" : "# タイムゾーンの扱い\n",
-    "line" : 300,
+    "line" : 303,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 322,
+    "endline" : 339,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L339_C7",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "# 「今日」の日付を得る\n",
+    "line" : 339,
+    "char" : 7,
+    "storageClass" : [
+     "@safe"
+    ],
+    "endline" : 352,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L352_C7",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "# 値の構築方法に関するパターン\n\nstd.datetimeの各型は、値の直接指定か、ベースとなる型＋付加情報、というパターンでコンストラクタを使って構築します。\n",
+    "line" : 352,
+    "char" : 7,
+    "storageClass" : [
+     "@safe"
+    ],
+    "endline" : 386,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L386_C7",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "# DateTimeからDateを得るなど、上位の複合型から一部を取り出す方法\n\n多くの場合、目的の部分型を得るためのプロパティがあります。\nDateTime型の場合は `date` と `timeOfDay` プロパティで取り出します。\nInterval型の場合は `begin` と `end` プロパティで取り出します。\n\nSysTime型の場合は、DateTime型やDate型へ直接キャストすることで部分型を得ることができます。\n",
+    "line" : 386,
+    "char" : 7,
+    "storageClass" : [
+     "@safe"
+    ],
+    "endline" : 419,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L419_C7",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "# Unix timeとSysTimeの相互変換方法、Unix timeの作成方法\n\nUnix timeは UTC時間の1970年1月1日 0時0分0秒からの秒数となります。\nこれはタイムゾーンがUTC基準と定められていることから、\nタイムゾーン情報を持つ SysTimeのみ が相互変換の方法を提供しています。\n",
+    "line" : 419,
+    "char" : 7,
+    "storageClass" : [
+     "@safe"
+    ],
+    "endline" : 455,
     "endchar" : 1
    }
   ]
@@ -726,46 +778,46 @@
     "storageClass" : [
      "@system"
     ],
-    "endline" : 779,
+    "endline" : 783,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L779_C7",
+    "name" : "__unittest_L783_C7",
     "kind" : "function",
     "protection" : "public",
-    "comment" : "# std.exception.ifThrown\n",
-    "line" : 779,
+    "comment" : "# std.exception.ifThrown\n\nもしかしたら例外が発生するかもしれない場合に、例外が発生した際の代替値を指定するために使用します。\nSee_Also:\n    - https://dlang.org/phobos/std_exception.html#ifThrown\n",
+    "line" : 783,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 787,
+    "endline" : 825,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L787_C7",
+    "name" : "__unittest_L825_C7",
     "kind" : "function",
     "protection" : "public",
-    "comment" : "# std.exception.assertThrown / std.exception.assertNotThrown\n",
-    "line" : 787,
+    "comment" : "# std.exception.assertThrown / std.exception.assertNotThrown\nこの関数をこの条件で呼び出すと必ず例外を発生させるはずだ、という状況をテストで検証する場合、通常ならば以下のようにcatchしてassert文で検証します。\n\n```d\nbool exthrown;\ntry\n{\n    auto num = \"hogehoge\".to!int();\n}\ncatch (ConvException e)\n{\n    exthrown = true;\n}\nassert(exthrown, \"hogehoge is not a number, but exception is not caught.\");\n```\n\n毎回これをやるのは手間なので、 assertThrown や assertNotThrown を使って楽をすることができます。\nassertThrown や assertNotThrownは、例外の型をテンプレート引数で指定することもできます。\n(指定しなければExceptionがキャッチされるかどうかを確認します)\n\nSee_Also:\n    - https://dlang.org/phobos/std_exception.html#assertThrown\n    - https://dlang.org/phobos/std_exception.html#assertNotThrown\n\n",
+    "line" : 825,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 795,
+    "endline" : 844,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L795_C7",
+    "name" : "__unittest_L844_C7",
     "kind" : "function",
     "protection" : "public",
-    "comment" : "# std.exception.handle\n",
-    "line" : 795,
+    "comment" : "# std.exception.handle\n\nRangeを使用した処理では、mapなど要素一つ一つに対して処理を行うような操作が多いですが、要素に対する操作中例外が発生することも少なくありません。\nhandle関数では要素の操作中に例外が発生した場合に、その例外への対処を行うことができます。ifThrownのRange版のような関数です。\n\nSee_Also:\n    - https://dlang.org/phobos/std_exception.html#handle\n",
+    "line" : 844,
     "char" : 7,
     "storageClass" : [
      "@safe"
     ],
-    "endline" : 800,
+    "endline" : 864,
     "endchar" : 1
    }
   ]
@@ -1036,46 +1088,85 @@
     "storageClass" : [
      "@system"
     ],
-    "endline" : 64,
+    "endline" : 65,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L64_C9",
+    "name" : "__unittest_L65_C9",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "独自のHeaderを付けてGETリクエストを送る方法\n\n外部APIを呼ぶ場合など、AuthorizationヘッダーでBearerトークンを渡す例です。\n",
+    "line" : 65,
+    "char" : 9,
+    "storageClass" : [
+     "@system"
+    ],
+    "endline" : 88,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L88_C9",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "www-form-urlencoding 形式でデータをPOSTする方法\n",
+    "line" : 88,
+    "char" : 9,
+    "storageClass" : [
+     "@system"
+    ],
+    "endline" : 114,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L114_C9",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "JSON 形式のデータをPOSTする方法\n",
+    "line" : 114,
+    "char" : 9,
+    "storageClass" : [
+     "@system"
+    ],
+    "endline" : 149,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L149_C9",
     "kind" : "function",
     "protection" : "public",
     "comment" : "文字コードの話\n",
-    "line" : 64,
+    "line" : 149,
     "char" : 9,
     "storageClass" : [
      "@system"
     ],
-    "endline" : 108,
+    "endline" : 193,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L108_C9",
+    "name" : "__unittest_L193_C9",
     "kind" : "function",
     "protection" : "public",
     "comment" : "認証付きProxyを通す\n",
-    "line" : 108,
+    "line" : 193,
     "char" : 9,
     "storageClass" : [
      "@system"
     ],
-    "endline" : 145,
+    "endline" : 230,
     "endchar" : 1
    },
    {
-    "name" : "__unittest_L145_C9",
+    "name" : "__unittest_L230_C9",
     "kind" : "function",
     "protection" : "public",
     "comment" : "クライアント認証する\n\nCurlOption.sslcertなどのオプションを使用します。\n\n-  WindowsではDMDやLDCにOpenSSLがリンクされていないlibcurl.dllが使われているようですが\n   クライアント認証にはOpenSSLが必要となりますので、OpenSSLがリンクされたlibcurl.dllを使用する必要があります。$(BR)\n-  さらに、cURLの公式で配布している64bitのDLLは libcurl-x64.dll という名称ですが、`std.net.curl`が使用するDLLの名称は`libcurl.dll`または`curl.dll`固定です。\n   このため、ファイル名を変更する必要があります。\n-  また、OpenSSLのDLL`libcrypto-1_1-x64.dll`、`libssl-1_1-x64.dll`なども用意します。\n\nなお、CA証明書、クライアント証明書や秘密鍵の生成方法・変換方法はここでは解説いたしません。\n",
-    "line" : 145,
+    "line" : 230,
     "char" : 9,
     "storageClass" : [
      "@system"
     ],
-    "endline" : 200,
+    "endline" : 285,
     "endchar" : 1
    }
   ]
@@ -1726,7 +1817,7 @@
   "name" : "sync_example",
   "kind" : "module",
   "file" : "/home/runner/work/Cookbook/Cookbook/source/sync_example.d",
-  "comment" : "同期機構/排他処理\n\nマルチスレッドで処理する場合、複数スレッドから同時に同じ変数を読み書きしないようにする必要があります。\nこれを適切に管理・実現するため、様々な同期処理が必要になる場合があります。\n\n手法については様々な物がありますが、ここではランタイムが持つ同期機構として以下について整理していきます。\n\n- 単独の `synchronized` 文\n- `Mutex`\n- `ReadWriteMutex`\n- `Barrier`\n- `Condition`\n- `Semaphore` (TODO)\n- `Event` (TODO)\n\nSource: $(LINK_TO_SRC source/_sync_example.d)\n",
+  "comment" : "同期機構/排他処理\n\nマルチスレッドで処理する場合、複数スレッドから同時に同じ変数を読み書きしないようにする必要があります。\nこれを適切に管理・実現するため、様々な同期処理が必要になる場合があります。\n\n手法については様々な物がありますが、ここではランタイムが持つ同期機構として以下について整理していきます。\n\n- 単独の `synchronized` 文\n- `Mutex`\n- `ReadWriteMutex`\n- `Barrier`\n- `Condition`\n- `Semaphore`\n- `Event`\n\nSource: $(LINK_TO_SRC source/_sync_example.d)\n",
   "members" : [
    {
     "name" : "__unittest_L28_C1",
@@ -1784,7 +1875,27 @@
     "comment" : "Conditionで、通知による同期を行う例です。\n\nConditionのコンストラクタに渡したMutexをロックしているときにwaitすると、そのMutexのロックを解除して待機状態に入ります。\nその後別スレッドがMutexをロックすると、notifyされても、Mutexがロック解除されるまでは待機を維持します。\n\n逆に、Conditionのコンストラクタに渡したMutexのロック解除中にwaitした場合、単にほかのスレッドからnotifyされるまで待機します。\n\n使用例として、Producer Consumerパターン内で、Guarded Suspensionパターンでの同期処理を行う場合に利用できます。\n- [解説サイト](https://www.hyuki.com/dp/dpinfo.html#ProducerConsumer)\n\nSee_Also:\n    - https://dlang.org/phobos/core_sync_condition.html\n",
     "line" : 198,
     "char" : 1,
-    "endline" : 248,
+    "endline" : 262,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L262_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "Semaphoreで、通知による同期を行う例です。\n\nConditionよりも単純で、Mutexとの関係を気にする必要はありません。\nSemaphoreは内部にカウント値を持っており、notifyでカウント値は+1されます。\nwaitではカウント値が0より大きくなるまで制御をブロックし、カウント値が0より大きくなったら制御を戻しつつカウント値を-1します。\n\n共有資源がある場合、通知する側はnotify以降の共有資源へのアクセス、通知される側はwait以前の共通資源へのアクセスについて、互いに競合しないよう排他する必要があります。\nSemaphoreでは通知する側はnotifyより前に共有資源の編集を終え、通知される側はwait以降に共有資源を使うようにすればよいでしょう。\n\nSee_Also:\n    - https://dlang.org/phobos/core_sync_semaphore.html\n",
+    "line" : 262,
+    "char" : 1,
+    "endline" : 301,
+    "endchar" : 1
+   },
+   {
+    "name" : "__unittest_L301_C1",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "Eventで、通知による同期を行う例です。\n\nConditionやSemaphoreよりも単純です。ただのフラグと考えればよいです。\nEventは内部にフラグを持っており、setでtrue(シグナル状態)に、resetでfalse(非シグナル状態)になります。\nwaitでは、フラグを見てfalseならtrueになるまで制御をブロックします。ここでEventのコンストラクタで指定する `manualReset` がfalseの場合、waitで制御を返した後、フラグをfalseに自動的に戻します。\nEventのコンストラクタの `initialState` は、このフラグの初期状態を表します。\n\n共有資源がある場合、通知する側はset以降の共有資源へのアクセス、通知される側はwait以前の共通資源へのアクセスについて、互いに競合しないよう排他する必要があります。\nEventでは通知する側はsetより前に共有資源の編集を終え、通知される側はwait以降に共有資源を使うようにすればよいでしょう。\n\nSee_Also:\n    - https://dlang.org/phobos/core_sync_event.html\n",
+    "line" : 301,
+    "char" : 1,
+    "endline" : 341,
     "endchar" : 1
    }
   ]
